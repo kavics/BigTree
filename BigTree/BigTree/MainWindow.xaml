@@ -1,0 +1,26 @@
+﻿<Window x:Class="BigTree.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BigTree"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="820" Loaded="Window_Loaded">
+    <Grid Name="mainGrid">
+        <Canvas x:Name="canvas1" Margin="5,5,5,42" Visibility="Visible"/>
+        <Canvas x:Name="canvas2" Margin="5,5,5,42" Visibility="Hidden"/>
+        <Button x:Name="startButton" Content="START" HorizontalAlignment="Right" Margin="0,0,10,10" Width="75" Click="startButton_Click" RenderTransformOrigin="0.96,0.531" Height="27" VerticalAlignment="Bottom"/>
+
+        <Label x:Name="iterationLabel" Content="Iteration:" HorizontalAlignment="Left" Margin="14,0,0,10" Width="58" Height="27" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="iterationTextBox" HorizontalAlignment="Left" Margin="72,0,0,10" TextWrapping="Wrap" Text="{Binding Path=Iteration}" Width="70" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+
+        <Label x:Name="forceMaxLabel" Content="Force:" HorizontalAlignment="Left" Margin="203,0,0,10" Width="41" Height="27" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="forceMaxTextBox" HorizontalAlignment="Left" Margin="249,0,0,10" TextWrapping="Wrap" Text="{Binding Path=ForceMax}" Width="70" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+
+        <Label x:Name="CalcTimeLabel" Content="Calc:" HorizontalAlignment="Left" Margin="350,0,0,10" Width="34" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="2.698,0.37"/>
+        <TextBox x:Name="CalcTimeTextBox" HorizontalAlignment="Left" Margin="384,0,0,10" TextWrapping="Wrap" Text="{Binding Path=CalcTime}" Width="120" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+
+        <Label x:Name="DrawTimeLabel" Content="Draw:" HorizontalAlignment="Left" Margin="528,0,0,10" Width="40" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
+        <TextBox x:Name="DrawTimeTextBox" HorizontalAlignment="Left" Margin="573,0,0,10" TextWrapping="Wrap" Text="{Binding Path=DrawTime}" Width="120" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+    </Grid>
+</Window>
