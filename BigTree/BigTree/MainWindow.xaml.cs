@@ -113,10 +113,10 @@ namespace BigTree
         private Tree CreateTree()
         {
             var nodes = new TreeReader<SnContent>(
-                new StreamReader(@"D:\Projects\Source\Repos\First\BigTree\BigTree\_Nodes_smalltree.txt"), SnContent.Parse)
+                new StreamReader(@"D:\Projects\Source\Repos\BigTree\BigTree\BigTree\_Nodes_smalltree.txt"), SnContent.Parse)
                 .ToList();
             var types = new TreeReader<SnContentType>(
-                new StreamReader(@"D:\Projects\Source\Repos\First\BigTree\BigTree\_Types.txt"), SnContentType.Parse)
+                new StreamReader(@"D:\Projects\Source\Repos\BigTree\BigTree\BigTree\_Types.txt"), SnContentType.Parse)
                 .ToList();
             return TreeBuilder.Build(nodes, types);
 

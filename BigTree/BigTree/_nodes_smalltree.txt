@@ -1,483 +1,484 @@
-﻿SELECT n.NodeId, n.ParentNodeId, n.IsSystem, n.NodeTypeId, v.Type FROM NodeInfoView v JOIN Nodes n ON v.NodeId = n.NodeId WHERE n.Path LIKE '/Root/System%' ORDER BY NodeId
-NodeId	ParentNodeId	IsSystem	NodeTypeId	Type
-1000	0	1	5	SystemFolder
-1001	1000	1	5	SystemFolder
-1002	1001	1	5	SystemFolder
-1003	1000	1	5	SystemFolder
-1004	1002	1	9	ContentType
-1005	1002	1	9	ContentType
-1006	1005	1	9	ContentType
-1007	1006	1	9	ContentType
-1008	1005	1	9	ContentType
-1009	1008	1	9	ContentType
-1010	1009	1	9	ContentType
-1011	1008	1	9	ContentType
-1012	1011	1	9	ContentType
-1013	1005	1	9	ContentType
-1014	1013	1	9	ContentType
-1015	1005	1	9	ContentType
-1016	1015	1	9	ContentType
-1017	1005	1	9	ContentType
-1018	1017	1	9	ContentType
-1019	1018	1	9	ContentType
-1020	1017	1	9	ContentType
-1021	1020	1	9	ContentType
-1022	1006	1	9	ContentType
-1023	1006	1	9	ContentType
-1024	1023	1	9	ContentType
-1025	1013	1	9	ContentType
-1026	1005	1	9	ContentType
-1027	1026	1	9	ContentType
-1028	1006	1	9	ContentType
-1029	1028	1	9	ContentType
-1030	1017	1	9	ContentType
-1031	1017	1	9	ContentType
-1032	1013	1	9	ContentType
-1033	1017	1	9	ContentType
-1034	1026	1	9	ContentType
-1035	1034	1	9	ContentType
-1036	1035	1	9	ContentType
-1037	1017	1	9	ContentType
-1038	1017	1	9	ContentType
-1039	1005	1	9	ContentType
-1040	1006	1	9	ContentType
-1041	1040	1	9	ContentType
-1042	1008	1	9	ContentType
-1043	1006	1	9	ContentType
-1044	1008	1	9	ContentType
-1045	1026	1	9	ContentType
-1046	1045	1	9	ContentType
-1047	1023	1	9	ContentType
-1048	1047	1	9	ContentType
-1049	1017	1	9	ContentType
-1050	1026	1	9	ContentType
-1051	1006	1	9	ContentType
-1052	1006	1	9	ContentType
-1053	1023	1	9	ContentType
-1054	1053	1	9	ContentType
-1055	1015	1	9	ContentType
-1056	1028	1	9	ContentType
-1057	1006	1	9	ContentType
-1058	1006	1	9	ContentType
-1059	1006	1	9	ContentType
-1060	1008	1	9	ContentType
-1061	1006	1	9	ContentType
-1062	1047	1	9	ContentType
-1063	1047	1	9	ContentType
-1064	1063	1	9	ContentType
-1065	1017	1	9	ContentType
-1066	1065	1	9	ContentType
-1067	1008	1	9	ContentType
-1068	1006	1	9	ContentType
-1069	1017	1	9	ContentType
-1070	1015	1	9	ContentType
-1071	1019	1	9	ContentType
-1072	1013	1	9	ContentType
-1073	1008	1	9	ContentType
-1074	1006	1	9	ContentType
-1075	1015	1	9	ContentType
-1076	1017	1	9	ContentType
-1077	1047	1	9	ContentType
-1078	1013	1	9	ContentType
-1079	1013	1	9	ContentType
-1080	1005	1	9	ContentType
-1081	1020	1	9	ContentType
-1082	1008	1	9	ContentType
-1083	1013	1	9	ContentType
-1084	1013	1	9	ContentType
-1085	1013	1	9	ContentType
-1086	1026	1	9	ContentType
-1087	1008	1	9	ContentType
-1088	1053	1	9	ContentType
-1089	1013	1	9	ContentType
-1090	1009	1	9	ContentType
-1091	1026	1	9	ContentType
-1092	1002	1	9	ContentType
-1093	1006	1	9	ContentType
-1094	1006	1	9	ContentType
-1095	1017	1	9	ContentType
-1096	1017	1	9	ContentType
-1097	1047	1	9	ContentType
-1098	1008	1	9	ContentType
-1099	1098	1	9	ContentType
-1100	1099	1	9	ContentType
-1101	1009	1	9	ContentType
-1102	1034	1	9	ContentType
-1103	1015	1	9	ContentType
-1104	1011	1	9	ContentType
-1105	1017	1	9	ContentType
-1106	1047	1	9	ContentType
-1107	1005	1	9	ContentType
-1108	1026	1	9	ContentType
-1109	1008	1	9	ContentType
-1110	1006	1	9	ContentType
-1111	1006	1	9	ContentType
-1112	1026	1	9	ContentType
-1113	1013	1	9	ContentType
-1114	1113	1	9	ContentType
-1115	1011	1	9	ContentType
-1116	1035	1	9	ContentType
-1117	1036	1	9	ContentType
-1118	1006	1	9	ContentType
-1119	1009	1	9	ContentType
-1120	1006	1	9	ContentType
-1121	1017	1	9	ContentType
-1122	1006	1	9	ContentType
-1123	1122	1	9	ContentType
-1124	1017	1	9	ContentType
-1125	1006	1	9	ContentType
-1126	1087	1	9	ContentType
-1127	1006	1	9	ContentType
-1128	1006	1	9	ContentType
-1129	1028	1	9	ContentType
-1130	1006	1	9	ContentType
-1131	1005	1	9	ContentType
-1132	1005	1	9	ContentType
-1133	1026	1	9	ContentType
-1134	1005	1	9	ContentType
-1135	1134	1	9	ContentType
-1136	1015	1	9	ContentType
-1137	1011	1	9	ContentType
-1138	1122	1	9	ContentType
-1139	1013	1	9	ContentType
-1140	1006	1	9	ContentType
-1141	1028	1	9	ContentType
-1142	1006	1	9	ContentType
-1143	1028	1	9	ContentType
-1144	1006	1	9	ContentType
-1145	1122	1	9	ContentType
-1146	1122	1	9	ContentType
-1147	1017	1	9	ContentType
-1148	1005	1	9	ContentType
-1149	1047	1	9	ContentType
-1150	1017	1	9	ContentType
-1151	1047	1	9	ContentType
-1152	1017	1	9	ContentType
-1153	1005	1	9	ContentType
-1154	1047	1	9	ContentType
-1155	1028	1	9	ContentType
-1156	1006	1	9	ContentType
-1157	1028	1	9	ContentType
-1158	1028	1	9	ContentType
-1159	1005	1	9	ContentType
-1160	1008	1	9	ContentType
-1161	1149	1	9	ContentType
-1162	1017	1	9	ContentType
-1163	1020	1	9	ContentType
-1164	1013	1	9	ContentType
-1165	1005	1	9	ContentType
-1166	1028	1	9	ContentType
-1167	1008	1	9	ContentType
-1168	1026	1	9	ContentType
-1169	1013	1	9	ContentType
-1170	1036	1	9	ContentType
-1171	1001	1	5	SystemFolder
-1172	1171	1	117	Aspect
-1173	1003	1	49	Settings
-1174	1003	1	131	IndexingSettings
-1175	1003	1	132	LoggingSettings
-1176	1003	1	49	Settings
-1177	1003	1	133	PortalSettings
-1178	1003	1	130	ADSettings
-1179	1003	1	49	Settings
-5760	1000	1	5	SystemFolder
-5761	5760	1	31	Device
-5762	5760	1	31	Device
-5763	1000	1	1	Folder
-5764	5763	1	1	Folder
-5765	5764	1	12	File
-5766	5764	1	12	File
-5767	5763	1	1	Folder
-5768	5767	1	12	File
-5769	5767	1	12	File
-5770	1000	1	140	Page
-5771	1000	1	1	Folder
-5772	5771	1	12	File
-5773	5771	1	12	File
-5774	5771	1	12	File
-5775	5771	1	12	File
-5776	1000	1	29	SmartFolder
-5777	1001	1	5	SystemFolder
-5778	5777	1	1	Folder
-5779	5778	1	140	Page
-5780	5778	1	140	Page
-5781	5777	1	1	Folder
-5782	5781	1	140	Page
-5783	1000	1	1	Folder
-5784	5783	1	1	Folder
-5785	5784	1	54	ExecutableFile
-5786	5784	1	12	File
-5787	5784	1	12	File
-5788	5784	1	12	File
-5789	5784	1	12	File
-5790	5784	1	12	File
-5791	5784	1	12	File
-5792	5784	1	12	File
-5793	5784	1	12	File
-5794	5784	1	12	File
-5795	5784	1	12	File
-5796	5784	1	12	File
-5797	5784	1	12	File
-5798	5784	1	12	File
-5799	5784	1	12	File
-5800	5784	1	12	File
-5801	5784	1	12	File
-5802	5784	1	12	File
-5803	5784	1	12	File
-5804	5784	1	12	File
-5805	5784	1	12	File
-5806	5784	1	12	File
-5807	5784	1	12	File
-5808	5784	1	12	File
-5809	5784	1	12	File
-5810	5784	1	12	File
-5811	5784	1	12	File
-5812	5784	1	12	File
-5813	5784	1	12	File
-5814	5784	1	12	File
-5815	5783	1	1	Folder
-5816	5815	1	160	ListView
-5817	5815	1	12	File
-5818	5815	1	1	Folder
-5819	5818	1	12	File
-5820	5818	1	12	File
-5821	5818	1	12	File
-5822	5815	1	12	File
-5823	5815	1	12	File
-5824	5815	1	12	File
-5825	5815	1	12	File
-5826	5815	1	12	File
-5827	5815	1	12	File
-5828	5815	1	12	File
-5829	5815	1	12	File
-5830	5815	1	12	File
-5831	5815	1	12	File
-5832	5815	1	12	File
-5833	5815	1	12	File
-5834	5815	1	12	File
-5835	5815	1	12	File
-5836	5815	1	12	File
-5837	5815	1	12	File
-5838	5815	1	12	File
-5839	5815	1	12	File
-5840	5815	1	12	File
-5841	5815	1	12	File
-5842	5815	1	1	Folder
-5843	5842	1	144	WebContentDemo
-5844	5842	1	144	WebContentDemo
-5845	5842	1	144	WebContentDemo
-5846	5842	1	12	File
-5847	5842	1	12	File
-5848	5815	1	160	ListView
-5849	5815	1	160	ListView
-5850	5815	1	160	ListView
-5851	5815	1	160	ListView
-5852	5815	1	160	ListView
-5853	5815	1	160	ListView
-5854	5815	1	12	File
-5855	5815	1	12	File
-5856	5783	1	1	Folder
-5857	5856	1	12	File
-5858	5856	1	12	File
-5859	5783	1	1	Folder
-5860	5859	1	1	Folder
-5861	5860	1	12	File
-5862	5859	1	1	Folder
-5863	5862	1	12	File
-5864	5859	1	1	Folder
-5865	5864	1	12	File
-5866	5859	1	1	Folder
-5867	5866	1	12	File
-5868	5859	1	1	Folder
-5869	5868	1	12	File
-5870	5868	1	12	File
-5871	5859	1	1	Folder
-5872	5871	1	12	File
-5873	5859	1	1	Folder
-5874	5873	1	12	File
-5875	5859	1	1	Folder
-5876	5875	1	12	File
-5877	5875	1	12	File
-5878	5875	1	12	File
-5879	5875	1	12	File
-5880	5875	1	12	File
-5881	5859	1	1	Folder
-5882	5881	1	12	File
-5883	5859	1	1	Folder
-5884	5883	1	12	File
-5885	5859	1	12	File
-5886	5859	1	1	Folder
-5887	5886	1	1	Folder
-5888	5887	1	57	Image
-5889	5887	1	57	Image
-5890	5887	1	57	Image
-5891	5887	1	57	Image
-5892	5887	1	57	Image
-5893	5887	1	57	Image
-5894	5887	1	57	Image
-5895	5887	1	57	Image
-5896	5887	1	57	Image
-5897	5887	1	57	Image
-5898	5887	1	57	Image
-5899	5887	1	57	Image
-5900	5887	1	57	Image
-5901	5887	1	57	Image
-5902	5887	1	57	Image
-5903	5887	1	57	Image
-5904	5887	1	57	Image
-5905	5887	1	57	Image
-5906	5887	1	57	Image
-5907	5887	1	57	Image
-5908	5887	1	57	Image
-5909	5887	1	57	Image
-5910	5887	1	57	Image
-5911	5887	1	57	Image
-5912	5886	1	57	Image
-5913	5886	1	57	Image
-5914	5886	1	57	Image
-5915	5886	1	12	File
-5916	5886	1	12	File
-5917	5859	1	1	Folder
-5918	5917	1	12	File
-5919	5859	1	1	Folder
-5920	5919	1	12	File
-5921	5919	1	12	File
-5922	5919	1	12	File
-5923	5859	1	1	Folder
-5924	5923	1	12	File
-5925	5923	1	12	File
-5926	5923	1	12	File
-5927	5859	1	1	Folder
-5928	5927	1	12	File
-5929	5859	1	1	Folder
-5930	5929	1	12	File
-5931	5929	1	12	File
-5932	5929	1	12	File
-5933	5859	1	1	Folder
-5934	5933	1	12	File
-5935	5859	1	1	Folder
-5936	5935	1	12	File
-5937	5859	1	12	File
-5938	5859	1	1	Folder
-5939	5938	1	12	File
-5940	5859	1	1	Folder
-5941	5940	1	12	File
-5942	5859	1	1	Folder
-5943	5942	1	12	File
-5944	5859	1	1	Folder
-5945	5944	1	12	File
-5946	5944	1	12	File
-5947	5859	1	1	Folder
-5948	5947	1	12	File
-5949	5859	1	1	Folder
-5950	5949	1	12	File
-5951	5859	1	1	Folder
-5952	5951	1	12	File
-5953	5859	1	1	Folder
-5954	5953	1	12	File
-5955	5859	1	1	Folder
-5956	5955	1	12	File
-5957	5955	1	12	File
-5958	5955	1	12	File
-5959	5955	1	12	File
-5960	5955	1	12	File
-5961	5859	1	1	Folder
-5962	5961	1	12	File
-5963	5961	1	12	File
-5964	5859	1	12	File
-5965	5859	1	1	Folder
-5966	5965	1	1	Folder
-5967	5966	1	57	Image
-5968	5966	1	57	Image
-5969	5966	1	57	Image
-5970	5966	1	57	Image
-5971	5966	1	57	Image
-5972	5966	1	57	Image
-5973	5966	1	57	Image
-5974	5966	1	57	Image
-5975	5966	1	57	Image
-5976	5966	1	57	Image
-5977	5966	1	57	Image
-5978	5966	1	57	Image
-5979	5966	1	57	Image
-5980	5966	1	57	Image
-5981	5966	1	57	Image
-5982	5965	1	12	File
-5983	5783	1	1	Folder
-5984	5983	1	12	File
-5985	5783	1	1	Folder
-5986	5985	1	12	File
-5987	5985	1	12	File
-5988	5985	1	12	File
-5989	5783	1	1	Folder
-5990	5989	1	12	File
-5991	5783	1	1	Folder
-5992	5991	1	1	Folder
-5993	5992	1	12	File
-5994	5992	1	12	File
-5995	5992	1	12	File
-5996	5992	1	12	File
-5997	5992	1	12	File
-5998	5783	1	1	Folder
-5999	5998	1	144	WebContentDemo
-6000	5998	1	12	File
-6001	5998	1	144	WebContentDemo
-6002	5998	1	144	WebContentDemo
-6003	5783	1	1	Folder
-6004	6003	1	1	Folder
-6005	6004	1	12	File
-6006	6004	1	12	File
-6007	1000	1	1	Folder
-6008	6007	1	1	Folder
-6009	6008	1	22	Tag
-6010	6007	1	1	Folder
-6011	6010	1	22	Tag
-6012	6007	1	1	Folder
-6013	6012	1	22	Tag
-6014	6007	1	1	Folder
-6015	6014	1	22	Tag
-6016	6007	1	1	Folder
-6017	6016	1	22	Tag
-6018	6007	1	1	Folder
-6019	6018	1	22	Tag
-6020	6007	1	1	Folder
-6021	6020	1	22	Tag
-6022	6020	1	22	Tag
-6023	6007	1	1	Folder
-6024	6023	1	22	Tag
-6025	6007	1	1	Folder
-6026	1000	1	140	Page
-6027	1000	1	140	Page
-6028	1000	1	5	SystemFolder
-6029	6028	1	54	ExecutableFile
-6030	6028	1	54	ExecutableFile
-6031	6028	1	1	Folder
-6032	6031	1	54	ExecutableFile
-6033	6031	1	54	ExecutableFile
-6034	6031	1	54	ExecutableFile
-6035	6031	1	54	ExecutableFile
-6036	6031	1	54	ExecutableFile
-6037	6031	1	54	ExecutableFile
-6038	6028	1	12	File
-6039	6028	1	12	File
-6040	6028	1	54	ExecutableFile
-6041	6028	1	54	ExecutableFile
-6042	6028	1	54	ExecutableFile
-6043	6028	1	54	ExecutableFile
-6044	6028	1	54	ExecutableFile
-6045	6028	1	12	File
-6046	1000	1	5	SystemFolder
-6047	6046	1	61	WorkflowDefinition
-6048	6046	1	61	WorkflowDefinition
-6049	6046	1	61	WorkflowDefinition
-6050	6046	1	61	WorkflowDefinition
-6051	6046	1	61	WorkflowDefinition
-6052	1000	1	1	Folder
-6053	6052	1	1	Folder
-6054	6052	1	1	Folder
-6055	6052	1	1	Folder
-6056	6052	1	1	Folder
-6057	6052	1	1	Folder
-6058	6052	1	1	Folder
-6059	6058	1	1	Folder
-6060	6058	1	1	Folder
+﻿SELECT n.NodeId, n.ParentNodeId, n.IsSystem, n.NodeTypeId, v.Type, n.Name FROM NodeInfoView v JOIN Nodes n ON v.NodeId = n.NodeId WHERE n.Path LIKE '/Root/System%' ORDER BY NodeId
+NodeId	ParentNodeId	IsSystem	NodeTypeId	Type	Name
+1000	NULL	0	4	PortalRoot	System
+1001	1000	1	5	SystemFolder	Schema
+1002	1001	1	5	SystemFolder	ContentTypes
+1003	1000	1	5	SystemFolder	Settings
+1004	1002	1	9	ContentType	ContentType
+1005	1002	1	9	ContentType	GenericContent
+1006	1005	1	9	ContentType	Folder
+1007	1006	1	9	ContentType	ADFolder
+1008	1005	1	9	ContentType	File
+1009	1008	1	9	ContentType	Settings
+1010	1009	1	9	ContentType	ADSettings
+1011	1008	1	9	ContentType	SystemFile
+1012	1011	1	9	ContentType	ApplicationCacheFile
+1013	1005	1	9	ContentType	Application
+1014	1013	1	9	ContentType	ApplicationOverride
+1015	1005	1	9	ContentType	Workflow
+1016	1015	1	9	ContentType	ApprovalWorkflow
+1017	1005	1	9	ContentType	ListItem
+1018	1017	1	9	ContentType	Task
+1019	1018	1	9	ContentType	ApprovalWorkflowTask
+1020	1017	1	9	ContentType	WebContent
+1021	1020	1	9	ContentType	Article
+1022	1006	1	9	ContentType	ArticleSection
+1023	1006	1	9	ContentType	ContentList
+1024	1023	1	9	ContentType	Aspect
+1025	1013	1	9	ContentType	BackupIndexHandler
+1026	1005	1	9	ContentType	FieldSettingContent
+1027	1026	1	9	ContentType	BinaryFieldSetting
+1028	1006	1	9	ContentType	Workspace
+1029	1028	1	9	ContentType	Blog
+1030	1017	1	9	ContentType	BlogPost
+1031	1017	1	9	ContentType	CalendarEvent
+1032	1013	1	9	ContentType	CaptchaImageApplication
+1033	1017	1	9	ContentType	Car
+1034	1026	1	9	ContentType	TextFieldSetting
+1035	1034	1	9	ContentType	ShortTextFieldSetting
+1036	1035	1	9	ContentType	ChoiceFieldSetting
+1037	1017	1	9	ContentType	Comment
+1038	1017	1	9	ContentType	ConfirmationItem
+1039	1005	1	9	ContentType	ContentLink
+1040	1006	1	9	ContentType	SmartFolder
+1041	1040	1	9	ContentType	ContentRotator
+1042	1008	1	9	ContentType	ContentView
+1043	1006	1	9	ContentType	ContentViews
+1044	1008	1	9	ContentType	Contract
+1045	1026	1	9	ContentType	NumberFieldSetting
+1046	1045	1	9	ContentType	CurrencyFieldSetting
+1047	1023	1	9	ContentType	ItemList
+1048	1047	1	9	ContentType	CustomList
+1049	1017	1	9	ContentType	CustomListItem
+1050	1026	1	9	ContentType	DateTimeFieldSetting
+1051	1006	1	9	ContentType	Device
+1052	1006	1	9	ContentType	DiscussionForum
+1053	1023	1	9	ContentType	Library
+1054	1053	1	9	ContentType	DocumentLibrary
+1055	1015	1	9	ContentType	DocumentPreviewWorkflow
+1056	1028	1	9	ContentType	DocumentWorkspace
+1057	1006	1	9	ContentType	DocumentWorkspaceFolder
+1058	1006	1	9	ContentType	Domain
+1059	1006	1	9	ContentType	Domains
+1060	1008	1	9	ContentType	DynamicJsonContent
+1061	1006	1	9	ContentType	Email
+1062	1047	1	9	ContentType	EventList
+1063	1047	1	9	ContentType	Form
+1064	1063	1	9	ContentType	EventRegistrationForm
+1065	1017	1	9	ContentType	FormItem
+1066	1065	1	9	ContentType	EventRegistrationFormItem
+1067	1008	1	9	ContentType	ExecutableFile
+1068	1006	1	9	ContentType	ExpenseClaim
+1069	1017	1	9	ContentType	ExpenseClaimItem
+1070	1015	1	9	ContentType	ExpenseClaimWorkflow
+1071	1019	1	9	ContentType	ExpenseClaimWorkflowTask
+1072	1013	1	9	ContentType	ExportToCsvApplication
+1073	1008	1	9	ContentType	FieldControlTemplate
+1074	1006	1	9	ContentType	FieldControlTemplates
+1075	1015	1	9	ContentType	ForgottenPasswordWorkflow
+1076	1017	1	9	ContentType	ForumEntry
+1077	1047	1	9	ContentType	ForumTopic
+1078	1013	1	9	ContentType	GenericODataApplication
+1079	1013	1	9	ContentType	GoogleSitemap
+1080	1005	1	9	ContentType	Group
+1081	1020	1	9	ContentType	HTMLContent
+1082	1008	1	9	ContentType	HtmlTemplate
+1083	1013	1	9	ContentType	HttpEndpointDemoContent
+1084	1013	1	9	ContentType	HttpHandlerApplication
+1085	1013	1	9	ContentType	HttpStatusApplication
+1086	1026	1	9	ContentType	HyperLinkFieldSetting
+1087	1008	1	9	ContentType	Image
+1088	1053	1	9	ContentType	ImageLibrary
+1089	1013	1	9	ContentType	ImgResizeApplication
+1090	1009	1	9	ContentType	IndexingSettings
+1091	1026	1	9	ContentType	IntegerFieldSetting
+1092	1002	1	9	ContentType	JournalNode
+1093	1006	1	9	ContentType	KPIDatasource
+1094	1006	1	9	ContentType	KPIDatasources
+1095	1017	1	9	ContentType	Like
+1096	1017	1	9	ContentType	Link
+1097	1047	1	9	ContentType	LinkList
+1098	1008	1	9	ContentType	UserControl
+1099	1098	1	9	ContentType	ViewBase
+1100	1099	1	9	ContentType	ListView
+1101	1009	1	9	ContentType	LoggingSettings
+1102	1034	1	9	ContentType	LongTextFieldSetting
+1103	1015	1	9	ContentType	MailProcessorWorkflow
+1104	1011	1	9	ContentType	MasterPage
+1105	1017	1	9	ContentType	Memo
+1106	1047	1	9	ContentType	MemoList
+1107	1005	1	9	ContentType	NotificationConfig
+1108	1026	1	9	ContentType	NullFieldSetting
+1109	1008	1	9	ContentType	OrderForm
+1110	1006	1	9	ContentType	OrganizationalUnit
+1111	1006	1	9	ContentType	OtherWorkspaceFolder
+1112	1026	1	9	ContentType	PageBreakFieldSetting
+1113	1013	1	9	ContentType	Webform
+1114	1113	1	9	ContentType	Page
+1115	1011	1	9	ContentType	PageTemplate
+1116	1035	1	9	ContentType	PasswordFieldSetting
+1117	1036	1	9	ContentType	PermissionChoiceFieldSetting
+1118	1006	1	9	ContentType	PortalRoot
+1119	1009	1	9	ContentType	PortalSettings
+1120	1006	1	9	ContentType	PortletCategory
+1121	1017	1	9	ContentType	Portlet
+1122	1006	1	9	ContentType	SystemFolder
+1123	1122	1	9	ContentType	Portlets
+1124	1017	1	9	ContentType	Post
+1125	1006	1	9	ContentType	Posts
+1126	1087	1	9	ContentType	PreviewImage
+1127	1006	1	9	ContentType	ProfileDomain
+1128	1006	1	9	ContentType	Profiles
+1129	1028	1	9	ContentType	ProjectWorkspace
+1130	1006	1	9	ContentType	ProjectWorkspaceFolder
+1131	1005	1	9	ContentType	PublicRegistrationConfig
+1132	1005	1	9	ContentType	Query
+1133	1026	1	9	ContentType	ReferenceFieldSetting
+1134	1005	1	9	ContentType	User
+1135	1134	1	9	ContentType	RegisteredUser
+1136	1015	1	9	ContentType	RegistrationWorkflow
+1137	1011	1	9	ContentType	Resource
+1138	1122	1	9	ContentType	Resources
+1139	1013	1	9	ContentType	RssApplication
+1140	1006	1	9	ContentType	RuntimeContentContainer
+1141	1028	1	9	ContentType	SalesWorkspace
+1142	1006	1	9	ContentType	SalesWorkspaceFolder
+1143	1028	1	9	ContentType	Site
+1144	1006	1	9	ContentType	Sites
+1145	1122	1	9	ContentType	Skin
+1146	1122	1	9	ContentType	Skins
+1147	1017	1	9	ContentType	SliderItem
+1148	1005	1	9	ContentType	Subscription
+1149	1047	1	9	ContentType	Survey
+1150	1017	1	9	ContentType	SurveyItem
+1151	1047	1	9	ContentType	SurveyList
+1152	1017	1	9	ContentType	SurveyListItem
+1153	1005	1	9	ContentType	Tag
+1154	1047	1	9	ContentType	TaskList
+1155	1028	1	9	ContentType	TeamWorkspace
+1156	1006	1	9	ContentType	TrashBag
+1157	1028	1	9	ContentType	TrashBin
+1158	1028	1	9	ContentType	UserProfile
+1159	1005	1	9	ContentType	UserSearch
+1160	1008	1	9	ContentType	Video
+1161	1149	1	9	ContentType	Voting
+1162	1017	1	9	ContentType	VotingItem
+1163	1020	1	9	ContentType	WebContentDemo
+1164	1013	1	9	ContentType	WebServiceApplication
+1165	1005	1	9	ContentType	WikiArticle
+1166	1028	1	9	ContentType	Wiki
+1167	1008	1	9	ContentType	WorkflowDefinition
+1168	1026	1	9	ContentType	XmlFieldSetting
+1169	1013	1	9	ContentType	XsltApplication
+1170	1036	1	9	ContentType	YesNoFieldSetting
+1171	1001	1	5	SystemFolder	Aspects
+1172	1171	1	117	Aspect	Summarizable
+1173	1003	1	49	Settings	DocumentPreview.settings
+1174	1003	1	131	IndexingSettings	Indexing.settings
+1175	1003	1	132	LoggingSettings	Logging.settings
+1176	1003	1	49	Settings	MailProcessor.settings
+1177	1003	1	133	PortalSettings	Portal.settings
+1178	1003	1	130	ADSettings	SyncAD2Portal.settings
+1179	1003	1	49	Settings	TaskManagement.settings
+6133	1000	1	5	SystemFolder	Devices
+6134	6133	1	31	Device	iPad
+6135	6133	1	31	Device	Tablet
+6136	1000	1	1	Folder	errormessages
+6137	6136	1	1	Folder	default
+6138	6137	1	12	File	Global.html
+6139	6137	1	12	File	UserGlobal.html
+6140	6136	1	1	Folder	Default_Site
+6141	6140	1	12	File	Global.html
+6142	6140	1	12	File	UserGlobal.html
+6143	1000	1	140	Page	OData Request Builder
+6144	1000	1	140	Page	PermissionOverview
+6145	1000	1	1	Folder	Renderers
+6146	6145	1	12	File	Default-ContentLinker-CollectionList.xslt
+6147	6145	1	12	File	Default-List-Gallery.xslt
+6148	6145	1	12	File	Default-Page-Diagnostics.xslt
+6149	6145	1	12	File	Display-Xml.xslt
+6150	1000	1	29	SmartFolder	RuntimeQuery
+6151	1001	1	5	SystemFolder	(apps)
+6152	6151	1	1	Folder	Folder
+6153	6152	1	140	Page	Add
+6154	6152	1	140	Page	Explore
+6155	6151	1	1	Folder	ContentType
+6156	6155	1	140	Page	Add
+6157	1000	1	1	Folder	SystemPlugins
+6158	6157	1	1	Folder	Controls
+6159	6158	1	54	ExecutableFile	CaptchaImage.ashx
+6160	6158	1	12	File	RichTextConfig.config
+6161	6158	1	12	File	RejectDialog.ascx
+6162	6158	1	12	File	PortletSynchronizer.ascx
+6163	6158	1	12	File	PortalRemoteControl.ascx
+6164	6158	1	12	File	PermissionEditor.ascx
+6165	6158	1	12	File	GalleryToolbar.ascx
+6166	6158	1	12	File	ForumTopic.ascx
+6167	6158	1	12	File	ForumRoot.ascx
+6168	6158	1	12	File	ExploreToolbar.ascx
+6169	6158	1	12	File	Done.ascx
+6170	6158	1	12	File	DialogUpload.ascx
+6171	6158	1	12	File	DialogFileUpload.ascx
+6172	6158	1	12	File	DemoRichTextConfig.config
+6173	6158	1	12	File	ContentTypeInstallerControl.ascx
+6174	6158	1	12	File	CommandButtonsSimple.ascx
+6175	6158	1	12	File	CommandButtons.ascx
+6176	6158	1	12	File	CheckInButtons.ascx
+6177	6158	1	12	File	BookListing.ascx
+6178	6158	1	12	File	AjaxRichTextConfig.config
+6179	6158	1	12	File	AdvancedPanelButton.ascx
+6180	6158	1	12	File	ActionToolbar.ascx
+6181	6158	1	12	File	ActionPresenter.ascx
+6182	6158	1	12	File	ActionMenuPresenter.ascx
+6183	6158	1	12	File	ActionListPresenter.ascx
+6184	6158	1	12	File	ActionListGridPresenter.ascx
+6185	6158	1	12	File	ActionListGrid.ascx
+6186	6158	1	12	File	ActionList.ascx
+6187	6158	1	12	File	RootConsole.ascx
+6188	6158	1	12	File	UrlListEditor.ascx
+6189	6157	1	1	Folder	ListView
+6190	6189	1	160	ListView	ExploreContentTypeView.ascx
+6191	6189	1	12	File	TrashFrame.ascx
+6192	6189	1	1	Folder	Templates
+6193	6192	1	12	File	ExploreListView.xslt
+6194	6192	1	12	File	ListView.xslt
+6195	6192	1	12	File	ThumbnailView.xslt
+6196	6189	1	12	File	SurveyViewFrame.ascx
+6197	6189	1	12	File	SurveyRuleEditor.ascx
+6198	6189	1	12	File	SurveyList.ascx
+6199	6189	1	12	File	SortingEditorControl.ascx
+6200	6189	1	12	File	SetViewAsDefault.ascx
+6201	6189	1	12	File	QueryFilterControl.ascx
+6202	6189	1	12	File	MiniFrame.ascx
+6203	6189	1	12	File	MarkViewAsDefault.ascx
+6204	6189	1	12	File	ManageVote.ascx
+6205	6189	1	12	File	ManageSurvey.ascx
+6206	6189	1	12	File	ManageFields.ascx
+6207	6189	1	12	File	GroupingEditorControl.ascx
+6208	6189	1	12	File	GalleryViewFrame.ascx
+6209	6189	1	12	File	ExploreViewFrame.ascx
+6210	6189	1	12	File	ExpenseClaimItemViewFrame.ascx
+6211	6189	1	12	File	EmptyFrame.ascx
+6212	6189	1	12	File	DeleteField.ascx
+6213	6189	1	12	File	ContentTypeFrame.ascx
+6214	6189	1	12	File	ColumnSelectorControl.ascx
+6215	6189	1	12	File	ChoiceOptionEditor.ascx
+6216	6189	1	1	Folder	Voting
+6217	6216	1	144	WebContentDemo	aftersubmitcontent
+6218	6216	1	144	WebContentDemo	cannotseeresultcontent
+6219	6216	1	144	WebContentDemo	invalidsurveycontent
+6220	6216	1	12	File	VotingQuestion.ascx
+6221	6216	1	12	File	VotingResult.ascx
+6222	6189	1	160	ListView	RecentTextList.ascx
+6223	6189	1	160	ListView	RecentIconList.ascx
+6224	6189	1	160	ListView	ManageViews.ascx
+6225	6189	1	160	ListView	Fallback.ascx
+6226	6189	1	160	ListView	ExploreViewNoSettings.ascx
+6227	6189	1	160	ListView	ExploreView.ascx
+6228	6189	1	12	File	ViewFrame.ascx
+6229	6189	1	12	File	VotingViewFrame.ascx
+6230	6157	1	1	Folder	Notifications
+6231	6230	1	12	File	NotificationEditor.ascx
+6232	6230	1	12	File	NotificationList.ascx
+6233	6157	1	1	Folder	Portlets
+6234	6233	1	1	Folder	RatingSearch
+6235	6234	1	12	File	RatingSearch.ascx
+6236	6233	1	1	Folder	WorkflowAbort
+6237	6236	1	12	File	WorkflowAbort.ascx
+6238	6233	1	1	Folder	UserGroupManager
+6239	6238	1	12	File	GroupManager.ascx
+6240	6233	1	1	Folder	TagSearch
+6241	6240	1	12	File	TagSearch.ascx
+6242	6233	1	1	Folder	TagCloud
+6243	6242	1	12	File	TagCloudPortlet.ascx
+6244	6242	1	12	File	TagCloudPortletNew.ascx
+6245	6233	1	1	Folder	Purge
+6246	6245	1	12	File	Purge.ascx
+6247	6233	1	1	Folder	ProxyPurge
+6248	6247	1	12	File	ProxyPurge.ascx
+6249	6233	1	1	Folder	ParametricSearch
+6250	6249	1	12	File	AdvancedSearchForm.ascx
+6251	6249	1	12	File	ColleagueSearchInput.ascx
+6252	6249	1	12	File	ColleagueSearchInputTouch.ascx
+6253	6249	1	12	File	DefaultAdvancedSearchForm.ascx
+6254	6249	1	12	File	DefaultSearchForm.ascx
+6255	6233	1	1	Folder	OrganizationChart
+6256	6255	1	12	File	OrgChartView.xslt
+6257	6233	1	1	Folder	ListImporter
+6258	6257	1	12	File	ListImporterControl.ascx
+6259	6233	1	12	File	IntraUploadDialog.ascx
+6260	6233	1	1	Folder	ImageGallery
+6261	6260	1	1	Folder	DemoPictures
+6262	6261	1	57	Image	sn01.jpg
+6263	6261	1	57	Image	sn22.jpg
+6264	6261	1	57	Image	sn21.jpg
+6265	6261	1	57	Image	sn20.jpg
+6266	6261	1	57	Image	sn19.jpg
+6267	6261	1	57	Image	sn18.jpg
+6268	6261	1	57	Image	sn17.jpg
+6269	6261	1	57	Image	sn16.jpg
+6270	6261	1	57	Image	sn15.jpg
+6271	6261	1	57	Image	sn14.jpg
+6272	6261	1	57	Image	sn13.jpg
+6273	6261	1	57	Image	sn12.jpg
+6274	6261	1	57	Image	sn11.jpg
+6275	6261	1	57	Image	sn10.jpg
+6276	6261	1	57	Image	sn09.jpg
+6277	6261	1	57	Image	sn08.jpg
+6278	6261	1	57	Image	sn07.jpg
+6279	6261	1	57	Image	sn06.jpg
+6280	6261	1	57	Image	sn05.jpg
+6281	6261	1	57	Image	sn04.jpg
+6282	6261	1	57	Image	sn03.jpg
+6283	6261	1	57	Image	sn02.jpg
+6284	6261	1	57	Image	sn23.jpg
+6285	6261	1	57	Image	sn24.jpg
+6286	6260	1	57	Image	left.gif
+6287	6260	1	57	Image	loading.gif
+6288	6260	1	57	Image	right.gif
+6289	6260	1	12	File	slide.js
+6290	6260	1	12	File	style.css
+6291	6233	1	1	Folder	EventManager
+6292	6291	1	12	File	EventManagerView.ascx
+6293	6233	1	1	Folder	EventCalendar
+6294	6293	1	12	File	EventCalendar.ascx
+6295	6293	1	12	File	EventRegistrationApproval.ascx
+6296	6293	1	12	File	Unregister.ascx
+6297	6233	1	1	Folder	ContextSearch
+6298	6297	1	12	File	AdvancedView.ascx
+6299	6297	1	12	File	ExploreView.ascx
+6300	6297	1	12	File	QuickView.ascx
+6301	6233	1	1	Folder	ContentRestoreVersion
+6302	6301	1	12	File	RestoreVersion.ascx
+6303	6233	1	1	Folder	ContentRestore
+6304	6303	1	12	File	Restore.ascx
+6305	6303	1	12	File	RestoreError.ascx
+6306	6303	1	12	File	RestoreInfo.ascx
+6307	6233	1	1	Folder	ContentRename
+6308	6307	1	12	File	Rename.ascx
+6309	6233	1	1	Folder	ContentPublish
+6310	6309	1	12	File	ValidationError.ascx
+6311	6233	1	12	File	ContentListSettings.ascx
+6312	6233	1	1	Folder	ContentLinker
+6313	6312	1	12	File	ContentLinker.ascx
+6314	6233	1	1	Folder	ContentHistory
+6315	6314	1	12	File	History.ascx
+6316	6233	1	1	Folder	ContentEditor
+6317	6316	1	12	File	AddUserToGroup.ascx
+6318	6233	1	1	Folder	ContentApproval
+6319	6318	1	12	File	Approval.ascx
+6320	6318	1	12	File	EventRegistrationApproval.ascx
+6321	6233	1	1	Folder	ContentAddNew
+6322	6321	1	12	File	ContentAddNewUserControl.ascx
+6323	6233	1	1	Folder	CancelRegistration
+6324	6323	1	12	File	Confirmation.ascx
+6325	6233	1	1	Folder	AuditLog
+6326	6325	1	12	File	AuditLogControl.ascx
+6327	6233	1	1	Folder	ApplicationList
+6328	6327	1	12	File	ApplicationList.ascx
+6329	6233	1	1	Folder	AdvancedLogin
+6330	6329	1	12	File	AdvancedLoginView.ascx
+6331	6329	1	12	File	IntraView.ascx
+6332	6329	1	12	File	LoginDemo.ascx
+6333	6329	1	12	File	LoginView.ascx
+6334	6329	1	12	File	LoginViewForBookRental.ascx
+6335	6233	1	1	Folder	TagAdmin
+6336	6335	1	12	File	DeleteConfirmation.ascx
+6337	6335	1	12	File	TagAdminControl.ascx
+6338	6233	1	12	File	WorkspaceCreateOther.ascx
+6339	6233	1	1	Folder	WorkspaceWizard
+6340	6339	1	1	Folder	img
+6341	6340	1	57	Image	progress.gif
+6342	6340	1	57	Image	sn-wizard-dot-1-active.png
+6343	6340	1	57	Image	sn-wizard-dot-1-available.png
+6344	6340	1	57	Image	sn-wizard-dot-1-unavailable.png
+6345	6340	1	57	Image	sn-wizard-dot-2-active.png
+6346	6340	1	57	Image	sn-wizard-dot-2-available.png
+6347	6340	1	57	Image	sn-wizard-dot-2-unavailable.png
+6348	6340	1	57	Image	sn-wizard-dot-3-active.png
+6349	6340	1	57	Image	sn-wizard-dot-3-available.png
+6350	6340	1	57	Image	sn-wizard-dot-3-unavailable.png
+6351	6340	1	57	Image	sn-wizard-rtable-ne.png
+6352	6340	1	57	Image	sn-wizard-rtable-nw.png
+6353	6340	1	57	Image	sn-wizard-rtable-se.png
+6354	6340	1	57	Image	sn-wizard-rtable-sw.png
+6355	6340	1	57	Image	wizard-header.png
+6356	6339	1	12	File	NewWorkspaceWizard.ascx
+6357	6157	1	1	Folder	ProjectWorkspace
+6358	6357	1	12	File	ProjectDetails.ascx
+6359	6157	1	1	Folder	Query
+6360	6359	1	12	File	BookPagerControl.ascx
+6361	6359	1	12	File	PagerControl.ascx
+6362	6359	1	12	File	SampleQueryView.ascx
+6363	6157	1	1	Folder	Rating
+6364	6363	1	12	File	RatingHoverPanel.ascx
+6365	6157	1	1	Folder	Renderers
+6366	6365	1	1	Folder	Common
+6367	6366	1	12	File	GuiToNodeQuery.xslt
+6368	6366	1	12	File	Journal.xslt
+6369	6366	1	12	File	SiteMenu.xslt
+6370	6366	1	12	File	User-ListTags-Horizontal.xslt
+6371	6366	1	12	File	User-ListTags-Vertical.xslt
+6372	6157	1	1	Folder	Survey
+6373	6372	1	144	WebContentDemo	aftersubmitcontent
+6374	6372	1	12	File	EditTemplates.ascx
+6375	6372	1	144	WebContentDemo	invalidsurveycontent
+6376	6372	1	144	WebContentDemo	mailtemplatecontent
+6377	6157	1	1	Folder	Tools
+6378	6377	1	1	Folder	DirectoryServices
+6379	6378	1	12	File	AD2PortalConfig.xml
+6380	6378	1	12	File	Portal2ADConfig.xml
+6381	1000	1	1	Folder	Tags
+6382	6381	1	1	Folder	bl
+6383	6382	1	22	Tag	blog
+6384	6381	1	1	Folder	da
+6385	6384	1	22	Tag	daily
+6386	6381	1	1	Folder	ex
+6387	6386	1	22	Tag	external
+6388	6381	1	1	Folder	fr
+6389	6388	1	22	Tag	fresh
+6390	6381	1	1	Folder	in
+6391	6390	1	22	Tag	internal
+6392	6381	1	1	Folder	mo
+6393	6392	1	22	Tag	monthly
+6394	6381	1	1	Folder	ne
+6395	6394	1	22	Tag	new
+6396	6394	1	22	Tag	news
+6397	6381	1	1	Folder	sa
+6398	6397	1	22	Tag	sample
+6399	6381	1	1	Folder	te
+6400	1000	1	140	Page	TaskMonitor
+6401	1000	1	140	Page	VersionInfo
+6402	1000	1	5	SystemFolder	WebRoot
+6403	6402	1	54	ExecutableFile	binaryhandler.ashx
+6404	6402	1	54	ExecutableFile	DeleteAction.aspx
+6405	6402	1	1	Folder	DWS
+6406	6405	1	54	ExecutableFile	Dws.asmx
+6407	6405	1	54	ExecutableFile	Fpp.ashx
+6408	6405	1	54	ExecutableFile	Lists.asmx
+6409	6405	1	54	ExecutableFile	owssvr.aspx
+6410	6405	1	54	ExecutableFile	Versions.asmx
+6411	6405	1	54	ExecutableFile	Webs.asmx
+6412	6402	1	12	File	Explore.html
+6413	6402	1	12	File	ExploreFrame.html
+6414	6402	1	54	ExecutableFile	ExploreTree.aspx
+6415	6402	1	54	ExecutableFile	picker.aspx
+6416	6402	1	54	ExecutableFile	portlet-preview.aspx
+6417	6402	1	54	ExecutableFile	tinyproxy.ashx
+6418	6402	1	54	ExecutableFile	vsshandler.ashx
+6419	6402	1	12	File	prc.ascx
+6420	1000	1	5	SystemFolder	Workflows
+6421	6420	1	61	WorkflowDefinition	ApprovalWorkflow.xaml
+6422	6420	1	61	WorkflowDefinition	ExpenseClaimWorkflow.xaml
+6423	6420	1	61	WorkflowDefinition	ForgottenPasswordWorkflow.xaml
+6424	6420	1	61	WorkflowDefinition	MailProcessorWorkflow.xaml
+6425	6420	1	61	WorkflowDefinition	RegistrationWorkflow.xaml
+6426	1000	1	1	Folder	PermissionPlaceholders
+6427	6426	1	1	Folder	ContentStore-mvc
+6428	6426	1	1	Folder	DialogUpload-mvc
+6429	6426	1	1	Folder	ResourceEditor-mvc
+6430	6426	1	1	Folder	Wall-mvc
+6431	6426	1	1	Folder	Workspace-mvc
+6432	6426	1	1	Folder	Signalr
+6433	6432	1	1	Folder	DistributedTaskManagerHub
+6434	6432	1	1	Folder	TaskMonitorHub

@@ -16,13 +16,14 @@ namespace BigTree
         public int Id { get; set; }
         public int ParentId { get; set; }
         public bool IsSystem { get; set; }
+        string Name { get; set; }
         public SnContentType ContentType { get; set; }
 
         private static readonly char[] _split = "\t,;".ToCharArray();
 
         public static SnContent Parse(string src)
         {
-            // NodeId   ParentNodeId    IsSystem    NodeTypeId  Type
+            // NodeId   ParentNodeId    IsSystem    NodeTypeId  Type    Name
             var result = new SnContent();
 
             var cols = src.Split(_split, StringSplitOptions.RemoveEmptyEntries);
@@ -33,6 +34,8 @@ namespace BigTree
             if (!int.TryParse(cols[1], out id)) return null; result.ParentId = id;
             if (!int.TryParse(cols[2], out id)) return null; result.IsSystem = id != 0;
             if (!int.TryParse(cols[3], out id)) return null; result.NodeType = id;
+
+            result.Name = cols[5];
 
             return result;
         }
