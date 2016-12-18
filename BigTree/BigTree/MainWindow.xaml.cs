@@ -100,6 +100,35 @@ namespace BigTree
             }
         }
 
+        private bool _paused;
+        public bool Paused
+        {
+            get { return _paused; }
+            set
+            {
+                if (value != _paused)
+                {
+                    _paused = value;
+                    OnPropertyChanged("Paused");
+                }
+            }
+        }
+
+        private string _startButtonText;
+        public string StartButtonText
+        {
+            get { return _startButtonText; }
+            set
+            {
+                if (value != _startButtonText)
+                {
+                    _startButtonText = value;
+                    OnPropertyChanged("StartButtonText");
+                }
+            }
+        }
+        
+
         private void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -108,7 +137,22 @@ namespace BigTree
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
+            if (Paused)
+                Continue();
+            else
+                Pause();
         }
+        private void Pause()
+        {
+            Paused = true;
+            StartButtonText = "||";
+        }
+        private void Continue()
+        {
+            Paused = false;
+            StartButtonText = ">";
+        }
+
 
         private Tree CreateTree()
         {
@@ -137,6 +181,8 @@ namespace BigTree
             _tree = CreateTree();
             Redraw(_tree.Root);
 
+            Continue();
+
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 10);
@@ -160,6 +206,9 @@ namespace BigTree
 
         private void Redraw(Node node)
         {
+            if (_paused)
+                return;
+
             var timer = Stopwatch.StartNew();
 
             var active = canvas1.IsVisible ? canvas1 : canvas2;
