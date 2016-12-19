@@ -289,7 +289,8 @@ namespace BigTree
 
             var content = SearchContentByPosition(_tree.Root, mx, my) as SnContent;
 
-            QuickProperties = $"[{mx},{my}]: {content?.Name ?? ""}";
+            //QuickProperties = $"[{mx},{my}]: {content?.Name ?? string.Empty}";
+            QuickProperties = content?.Name ?? string.Empty;
         }
 
         private INode SearchContentByPosition(INode node, double mx, double my)
