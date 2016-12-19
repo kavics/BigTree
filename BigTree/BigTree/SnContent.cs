@@ -16,7 +16,7 @@ namespace BigTree
         public int Id { get; set; }
         public int ParentId { get; set; }
         public bool IsSystem { get; set; }
-        string Name { get; set; }
+        public string Name { get; set; }
         public SnContentType ContentType { get; set; }
 
         private static readonly char[] _split = "\t,;".ToCharArray();

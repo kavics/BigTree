@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="BigTree" Height="650" Width="820" Loaded="Window_Loaded">
     <Grid Name="mainGrid">
-        <Canvas x:Name="canvas1" Margin="5,5,5,42" Visibility="Visible"/>
-        <Canvas x:Name="canvas2" Margin="5,5,5,42" Visibility="Hidden"/>
+        <Canvas x:Name="canvas1" Margin="5,5,5,85" Visibility="Visible" MouseMove="canvas_MouseMove"/>
+        <Canvas x:Name="canvas2" Margin="5,5,5,85" Visibility="Hidden" MouseMove="canvas_MouseMove"/>
+
+        <TextBox x:Name="quickPropertiesTextBox" Margin="10,0,10,42" TextWrapping="Wrap" Text="{Binding Path=QuickProperties}" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
 
         <Label x:Name="iterationLabel" Content="Iteration:" HorizontalAlignment="Left" Margin="14,0,0,10" Width="58" Height="27" VerticalAlignment="Bottom"/>
         <TextBox x:Name="iterationTextBox" HorizontalAlignment="Left" Margin="72,0,0,10" TextWrapping="Wrap" Text="{Binding Path=Iteration}" Width="63" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />

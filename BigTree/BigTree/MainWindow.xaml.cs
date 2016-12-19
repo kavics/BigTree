@@ -127,7 +127,21 @@ namespace BigTree
                 }
             }
         }
-        
+
+        private string _quickProperties;
+        public string QuickProperties
+        {
+            get { return _quickProperties; }
+            set
+            {
+                if (value != _startButtonText)
+                {
+                    _quickProperties = value;
+                    OnPropertyChanged("QuickProperties");
+                }
+            }
+        }
+
 
         private void OnPropertyChanged(string name)
         {
@@ -157,10 +171,10 @@ namespace BigTree
         private Tree CreateTree()
         {
             var nodes = new TreeReader<SnContent>(
-                new StreamReader(@"D:\Projects\Source\Repos\BigTree\BigTree\BigTree\_Nodes_smalltree.txt"), SnContent.Parse)
+                new StreamReader(@"D:\Projects\github\space-bender\BigTree\BigTree\BigTree\_Nodes_smalltree.txt"), SnContent.Parse)
                 .ToList();
             var types = new TreeReader<SnContentType>(
-                new StreamReader(@"D:\Projects\Source\Repos\BigTree\BigTree\BigTree\_Types.txt"), SnContentType.Parse)
+                new StreamReader(@"D:\Projects\github\space-bender\BigTree\BigTree\BigTree\_Types.txt"), SnContentType.Parse)
                 .ToList();
             return TreeBuilder.Build(nodes, types);
 
@@ -267,5 +281,26 @@ namespace BigTree
             ctx.Canvas.Children.Add(line);
         }
 
+        private void canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            var mousePosition = e.GetPosition(canvas1);
+            var mx = mousePosition.X - canvas1.ActualWidth / 2;
+            var my = mousePosition.Y - canvas1.ActualHeight / 2;
+
+            var content = SearchContentByPosition(_tree.Root, mx, my) as SnContent;
+
+            QuickProperties = $"[{mx},{my}]: {content?.Name ?? ""}";
+        }
+
+        private INode SearchContentByPosition(INode node, double mx, double my)
+        {
+            if (Math.Abs(node.Position.X - mx) < 4 && Math.Abs(node.Position.Y - my) < 4)
+                return node;
+            INode result;
+            foreach (var child in node.Children)
+                if ((result = SearchContentByPosition(child, mx, my)) != null)
+                    return result;
+            return null;
+        }
     }
 }
