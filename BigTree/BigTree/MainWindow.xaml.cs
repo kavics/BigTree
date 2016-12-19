@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using IO = System.IO;
 
 namespace BigTree
 {
@@ -170,24 +172,18 @@ namespace BigTree
 
         private Tree CreateTree()
         {
-            var nodes = new TreeReader<SnContent>(
-                new StreamReader(@"D:\Projects\github\space-bender\BigTree\BigTree\BigTree\_Nodes_smalltree.txt"), SnContent.Parse)
-                .ToList();
-            var types = new TreeReader<SnContentType>(
-                new StreamReader(@"D:\Projects\github\space-bender\BigTree\BigTree\BigTree\_Types.txt"), SnContentType.Parse)
-                .ToList();
-            return TreeBuilder.Build(nodes, types);
+            var directory = IO.Path.GetDirectoryName(IO.Path.GetDirectoryName(IO.Path.GetDirectoryName(
+                    AppDomain.CurrentDomain.BaseDirectory)));
 
-            //var root = new Node { Position = new System.Drawing.PointF( 0, 0), NodeType = 0 };
-            //var tree = new Tree(root);
-            //tree.CreateNode(root, 100, -80, 2);
-            //tree.CreateNode(root, -80, 100, 2);
-            //tree.CreateNode(root, -60, -120, 2);
-            //var n = tree.CreateNode(root, 130, 40, 1);
-            //tree.CreateNode(n, 190, 20, 2);
-            //tree.CreateNode(n, 170, 90, 2);
-            //tree.CreateNode(n, 110, 110, 2);
-            //return tree;
+            var nodes = new TreeReader<SnContent>(
+                new StreamReader(IO.Path.Combine(directory, "_Nodes_smalltree.txt")), SnContent.Parse)
+                .ToList();
+
+            var types = new TreeReader<SnContentType>(
+                new StreamReader(IO.Path.Combine(directory, "_Types.txt")), SnContentType.Parse)
+                .ToList();
+
+            return TreeBuilder.Build(nodes, types);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
