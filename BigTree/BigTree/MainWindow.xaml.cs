@@ -32,6 +32,8 @@ namespace BigTree
             InitializeComponent();
             ForceMax = "";
             mainGrid.DataContext = this;
+            OffsetXText = "0";
+            OffsetYText = "0";
         }
 
         static SolidColorBrush _redBrush = new SolidColorBrush { Color = Colors.Red };
@@ -43,6 +45,42 @@ namespace BigTree
         SolidColorBrush[] _colorBrushes = new[] { _redBrush, _yellowBrush, _blueBrush, _greenBrush, _blackBrush, _grayBrush };
 
         private Tree _tree;
+
+        private string _offsetXText;
+        public string OffsetXText
+        {
+            get { return _offsetXText; }
+            set
+            {
+                if (value != _offsetXText)
+                {
+                    _offsetXText = value;
+                    double d = 0.0;
+                    double.TryParse(value, out d);
+                    OffsetX = d;
+                    OnPropertyChanged(nameof(OffsetXText));
+                }
+            }
+        }
+        public double OffsetX { get; set; }
+
+        private string _offsetYText;
+        public string OffsetYText
+        {
+            get { return _offsetYText; }
+            set
+            {
+                if (value != _offsetYText)
+                {
+                    _offsetYText = value;
+                    double d = 0.0;
+                    double.TryParse(value, out d);
+                    OffsetY = d;
+                    OnPropertyChanged(nameof(OffsetYText));
+                }
+            }
+        }
+        public double OffsetY { get; set; }
 
         private int _iteration;
         public int Iteration
@@ -229,7 +267,7 @@ namespace BigTree
             var inactive = canvas1.IsVisible ? canvas2 : canvas1;
 
             inactive.Children.Clear();
-            DrawTree(new DrawingContext(inactive), node);
+            DrawTree(new DrawingContext(inactive, OffsetX, OffsetY), node);
 
             inactive.Visibility = Visibility.Visible;
             active.Visibility = Visibility.Hidden;
@@ -284,8 +322,8 @@ namespace BigTree
         private void canvas_MouseMove(object sender, MouseEventArgs e)
         {
             var mousePosition = e.GetPosition(canvas1);
-            var mx = mousePosition.X - canvas1.ActualWidth / 2;
-            var my = mousePosition.Y - canvas1.ActualHeight / 2;
+            var mx = mousePosition.X - canvas1.ActualWidth / 2 - OffsetX;
+            var my = mousePosition.Y - canvas1.ActualHeight / 2 - OffsetY;
 
             var content = SearchContentByPosition(_tree.Root, mx, my) as SnContent;
 
