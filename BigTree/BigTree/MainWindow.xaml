@@ -19,16 +19,14 @@
         <TextBox x:Name="forceMaxTextBox" HorizontalAlignment="Left" Margin="173,0,0,10" TextWrapping="Wrap" Text="{Binding Path=ForceMax}" Width="60" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
 
         <Label x:Name="CalcTimeLabel" Content="Calc:" HorizontalAlignment="Left" Margin="238,0,0,10" Width="34" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="2.698,0.37"/>
-        <TextBox x:Name="CalcTimeTextBox" HorizontalAlignment="Left" Margin="272,0,0,10" TextWrapping="Wrap" Text="{Binding Path=CalcTime}" Width="60" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+        <TextBox x:Name="CalcTimeTextBox" HorizontalAlignment="Left" Margin="272,0,0,10" TextWrapping="Wrap" Text="{Binding Path=CalcTime}" Width="110" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
 
-        <Label x:Name="DrawTimeLabel" Content="Draw:" HorizontalAlignment="Left" Margin="337,0,0,10" Width="40" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
-        <TextBox x:Name="DrawTimeTextBox" HorizontalAlignment="Left" Margin="382,0,0,10" TextWrapping="Wrap" Text="{Binding Path=DrawTime}" Width="60" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+        <Label x:Name="DrawTimeLabel" Content="Draw:" HorizontalAlignment="Left" Margin="387,0,0,10" Width="40" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
+        <TextBox x:Name="DrawTimeTextBox" HorizontalAlignment="Left" Margin="432,0,0,10" TextWrapping="Wrap" Text="{Binding Path=DrawTime}" Width="110" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
 
-        <Label x:Name="OffseXLabel" Content="OffseX:" HorizontalAlignment="Left" Margin="447,0,0,10" Width="49" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
-        <TextBox x:Name="OffseXTextBox" HorizontalAlignment="Left" Margin="496,0,0,10" TextWrapping="Wrap" Text="{Binding Path=OffsetX}" Width="60" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
-
-        <Label x:Name="OffseYLabel" Content="OffseY:" HorizontalAlignment="Left" Margin="561,0,0,10" Width="49" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
-        <TextBox x:Name="OffseYTextBox" HorizontalAlignment="Left" Margin="610,0,0,10" TextWrapping="Wrap" Text="{Binding Path=OffsetY}" Width="60" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+        <Label x:Name="OffsetLabel" Content="Offset:" HorizontalAlignment="Left" Margin="547,0,0,10" Width="49" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
+        <TextBox x:Name="OffseXTextBox" HorizontalAlignment="Left" Margin="596,0,0,10" TextWrapping="Wrap" Text="{Binding Path=OffsetX}" Width="40" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+        <TextBox x:Name="OffseYTextBox" HorizontalAlignment="Left" Margin="641,0,0,10" TextWrapping="Wrap" Text="{Binding Path=OffsetY}" Width="40" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
 
         <Button x:Name="startButton" Content="{Binding Path=StartButtonText}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="60" Click="startButton_Click" RenderTransformOrigin="0.96,0.531" Height="27" VerticalAlignment="Bottom"/>
     </Grid>

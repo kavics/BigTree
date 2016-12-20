@@ -267,7 +267,9 @@ namespace BigTree
             var inactive = canvas1.IsVisible ? canvas2 : canvas1;
 
             inactive.Children.Clear();
-            DrawTree(new DrawingContext(inactive, OffsetX, OffsetY), node);
+            var ctx = new DrawingContext(inactive, OffsetX, OffsetY);
+            DrawHairLines(ctx);
+            DrawTree(ctx, node);
 
             inactive.Visibility = Visibility.Visible;
             active.Visibility = Visibility.Hidden;
@@ -276,11 +278,20 @@ namespace BigTree
             DrawTime = timer.Elapsed.ToString();
         }
 
+        private void DrawHairLines(DrawingContext ctx)
+        {
+            var width = ctx.Canvas.ActualWidth.ToSingle();
+            var height = ctx.Canvas.ActualHeight.ToSingle();
+            var x0 = ctx.X0.ToSingle();
+            var y0 = ctx.Y0.ToSingle();
+            DrawLine(ctx, new System.Drawing.PointF(-width - x0, 0.0f), new System.Drawing.PointF(width - x0, 0.0f), Brushes.Gray);
+            DrawLine(ctx, new System.Drawing.PointF(0.0f, -height - y0), new System.Drawing.PointF(0.0f, height - y0), Brushes.Gray);
+        }
         private void DrawTree(DrawingContext ctx, Node root)
         {
             foreach (var child in root.Children)
             {
-                DrawLine(ctx, root.Position, child.Position);
+                DrawLine(ctx, root.Position, child.Position, Brushes.Black);
                 DrawTree(ctx, child);
             }
             DrawNode(ctx, root);
@@ -303,7 +314,7 @@ namespace BigTree
                 Fill = fill,
             });
         }
-        private void DrawLine(DrawingContext ctx, System.Drawing.PointF p1, System.Drawing.PointF p2)
+        private void DrawLine(DrawingContext ctx, System.Drawing.PointF p1, System.Drawing.PointF p2, SolidColorBrush color)
         {
             var line = new Line
             {
@@ -311,7 +322,7 @@ namespace BigTree
                 Y1 = p1.Y + ctx.Y0,
                 X2 = p2.X + ctx.X0,
                 Y2 = p2.Y + ctx.Y0,
-                Stroke = Brushes.Black,
+                Stroke = color,
                 StrokeThickness = 1,
                 SnapsToDevicePixels = true,
             };
