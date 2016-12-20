@@ -13,11 +13,11 @@ namespace BigTree
         public double X0 { get; private set; }
         public double Y0 { get; private set; }
 
-        public DrawingContext(Canvas canvas)
+        public DrawingContext(Canvas canvas, double offsetX, double offsetY)
         {
             Canvas = canvas;
-            X0 = canvas.ActualWidth / 2;
-            Y0 = canvas.ActualHeight / 2;
+            X0 = canvas.ActualWidth / 2 + offsetX;
+            Y0 = canvas.ActualHeight / 2 + offsetY;
         }
 
         public float GetNodeSize(int nodeType)
