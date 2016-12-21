@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -94,8 +95,9 @@ namespace BigTree
                 if (value != _zoomText)
                 {
                     _zoomText = value;
-                    double d = 1.0;
-                    double.TryParse(value, out d);
+                    double d;
+                    if (!double.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out d))
+                        d = 1.0d;
                     Zoom = d;
                     OnPropertyChanged(nameof(ZoomText));
                 }
@@ -281,8 +283,16 @@ namespace BigTree
             var active = canvas1.IsVisible ? canvas1 : canvas2;
             var inactive = canvas1.IsVisible ? canvas2 : canvas1;
 
-            inactive.Children.Clear();
             var ctx = new DrawingContext(inactive, OffsetX, OffsetY);
+
+            //var transform = (MatrixTransform)inactive.RenderTransform;
+            //var matrix = transform.Matrix;
+            //var scale = Zoom;
+            //matrix.ScaleAtPrepend(scale, scale, ctx.X0, ctx.Y0);
+            //var newTransform = new MatrixTransform(matrix);
+            //inactive.RenderTransform = newTransform;
+
+            inactive.Children.Clear();
             DrawHairLines(ctx);
             DrawTree(ctx, node);
 
