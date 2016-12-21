@@ -262,6 +262,8 @@ namespace BigTree
             var active = canvas1.IsVisible ? canvas1 : canvas2;
             var inactive = canvas1.IsVisible ? canvas2 : canvas1;
 
+            zoom...
+
             inactive.Children.Clear();
             var ctx = new DrawingContext(inactive, OffsetX, OffsetY);
             DrawHairLines(ctx);
