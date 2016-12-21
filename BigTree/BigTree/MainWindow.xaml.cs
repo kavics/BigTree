@@ -257,6 +257,8 @@ namespace BigTree
             if (_paused)
                 return;
 
+            oscillation...
+
             var timer = Stopwatch.StartNew();
 
             var active = canvas1.IsVisible ? canvas1 : canvas2;
