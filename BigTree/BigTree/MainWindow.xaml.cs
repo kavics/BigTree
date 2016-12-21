@@ -36,6 +36,7 @@ namespace BigTree
             mainGrid.DataContext = this;
             OffsetXText = "0";
             OffsetYText = "0";
+            ZoomText = "1.0";
         }
 
         static SolidColorBrush _redBrush = new SolidColorBrush { Color = Colors.Red };
@@ -83,6 +84,24 @@ namespace BigTree
             }
         }
         public double OffsetY { get; set; }
+
+        private string _zoomText;
+        public string ZoomText
+        {
+            get { return _zoomText; }
+            set
+            {
+                if (value != _zoomText)
+                {
+                    _zoomText = value;
+                    double d = 1.0;
+                    double.TryParse(value, out d);
+                    Zoom = d;
+                    OnPropertyChanged(nameof(ZoomText));
+                }
+            }
+        }
+        public double Zoom { get; set; }
 
         private int _iteration;
         public int Iteration
@@ -261,8 +280,6 @@ namespace BigTree
 
             var active = canvas1.IsVisible ? canvas1 : canvas2;
             var inactive = canvas1.IsVisible ? canvas2 : canvas1;
-
-            zoom...
 
             inactive.Children.Clear();
             var ctx = new DrawingContext(inactive, OffsetX, OffsetY);
