@@ -17,6 +17,8 @@ namespace BigTreeCalc
         static float _rubberPow = 2; //UNDONE: move to the tree state
         static float _rubberMul = 800;// 1000; //UNDONE: move to the tree state
 
+        static float _dampingFactor = 0.40f; // Reduces oscillation
+
         public static void NextState(ITree<T> tree)
         {
             tree.State.ForceMax = 0;
@@ -107,7 +109,7 @@ namespace BigTreeCalc
                 if (dx < -FORCELIMIT) dx = -FORCELIMIT;
                 if (dy < -FORCELIMIT) dy = -FORCELIMIT;
 
-                var nextPosition = new PointF(node.Position.X + dx, node.Position.Y + dy);
+                var nextPosition = new PointF(node.Position.X + dx * _dampingFactor, node.Position.Y + dy * _dampingFactor);
                 node.Position = nextPosition;
             }
         }
