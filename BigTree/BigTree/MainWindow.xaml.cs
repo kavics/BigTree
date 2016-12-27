@@ -214,7 +214,7 @@ namespace BigTree
                     AppDomain.CurrentDomain.BaseDirectory)));
 
             var nodes = new TreeReader<SnContent>(
-                new StreamReader(IO.Path.Combine(directory, "_Nodes_smalltree.txt")), SnContent.Parse)
+                new StreamReader(IO.Path.Combine(directory, "_Nodes_midtree.txt")), SnContent.Parse)
                 .ToList();
 
             var types = new TreeReader<SnContentType>(

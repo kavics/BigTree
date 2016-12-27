@@ -16,7 +16,10 @@ namespace BigTree
                 if (child.ParentId != 0)
                     types[child.ParentId].AddChild(child);
 
-            var nodes = nodeList.ToDictionary(x => x.Id, x => x);
+            var nodes = new Dictionary<int, SnContent>();
+            foreach (var item in nodeList)
+                nodes.Add(item.Id, item);
+
             foreach (var child in nodes.Values)
                 if (child.ParentId != 0)
                     nodes[child.ParentId].AddChild(child);
