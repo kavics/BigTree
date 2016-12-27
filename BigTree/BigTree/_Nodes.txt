@@ -555,8 +555,6 @@ NodeId	ParentNodeId	IsSystem	NodeTypeId	Type	Name
 1541	1540	1	5	SystemFolder	(apps)
 1542	1541	1	1	Folder	This
 1543	1542	1	70	HttpStatusApplication	Browse
-1543	1542	1	70	HttpStatusApplication	Browse
-1544	1540	1	24	WikiArticle	Main
 1544	1540	1	24	WikiArticle	Main
 1545	1533	1	1	Folder	Images
 1546	1533	1	140	Page	RecentChanges
@@ -3753,15 +3751,12 @@ NodeId	ParentNodeId	IsSystem	NodeTypeId	Type	Name
 4737	4736	1	140	Page	Browse
 4738	4730	0	149	CustomList	Expense-Claims
 4739	4738	1	5	SystemFolder	(apps)
-4739	4738	1	5	SystemFolder	(apps)
-4740	4739	1	1	Folder	This
 4740	4739	1	1	Folder	This
 4741	4740	1	140	Page	Browse
 4742	4738	0	35	ExpenseClaim	Amsterdam-Trip
 4743	4742	0	91	ExpenseClaimItem	Flight-Bills
 4744	4742	0	91	ExpenseClaimItem	Hotel-Bills
 4745	4742	0	91	ExpenseClaimItem	Phone-Bills
-4746	4738	1	5	SystemFolder	CellTemplates
 4746	4738	1	5	SystemFolder	CellTemplates
 4747	4746	1	12	File	Amount.ascx
 4748	4746	1	12	File	Sum.ascx
