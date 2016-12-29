@@ -37,7 +37,7 @@ namespace BigTree
             mainGrid.DataContext = this;
             OffsetXText = "0";
             OffsetYText = "0";
-            ZoomText = "1.0";
+            ZoomText = "100";
         }
 
         static SolidColorBrush _redBrush = new SolidColorBrush { Color = Colors.Red };
@@ -97,8 +97,8 @@ namespace BigTree
                     _zoomText = value;
                     double d;
                     if (!double.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out d))
-                        d = 1.0d;
-                    Zoom = d;
+                        d = 100d;
+                    Zoom = d / 100d;
                     OnPropertyChanged(nameof(ZoomText));
                 }
             }
@@ -235,7 +235,7 @@ namespace BigTree
                     AppDomain.CurrentDomain.BaseDirectory)));
 
             var nodes = new TreeReader<SnContent>(
-                new StreamReader(IO.Path.Combine(directory, "_Nodes_midtree.txt")), SnContent.Parse)
+                new StreamReader(IO.Path.Combine(directory, "_Nodes_smalltree.txt")), SnContent.Parse)
                 .ToList();
 
             var types = new TreeReader<SnContentType>(
@@ -283,14 +283,7 @@ namespace BigTree
             var active = canvas1.IsVisible ? canvas1 : canvas2;
             var inactive = canvas1.IsVisible ? canvas2 : canvas1;
 
-            var ctx = new DrawingContext(inactive, OffsetX, OffsetY);
-
-            //var transform = (MatrixTransform)inactive.RenderTransform;
-            //var matrix = transform.Matrix;
-            //var scale = Zoom;
-            //matrix.ScaleAtPrepend(scale, scale, ctx.X0, ctx.Y0);
-            //var newTransform = new MatrixTransform(matrix);
-            //inactive.RenderTransform = newTransform;
+            var ctx = new DrawingContext(inactive, OffsetX, OffsetY, Zoom.ToSingle());
 
             inactive.Children.Clear();
             DrawHairLines(ctx);
@@ -302,6 +295,15 @@ namespace BigTree
             timer.Stop();
             DrawTime = timer.Elapsed.ToString();
         }
+
+        //private void DoZoom(double x0, double y0, Canvas canvas, double scale)
+        //{
+        //    var transform = (MatrixTransform)canvas.RenderTransform;
+        //    var matrix = transform.Matrix;
+        //    matrix.ScaleAtPrepend(scale, scale, x0, y0);
+        //    var newTransform = new MatrixTransform(matrix);
+        //    canvas.RenderTransform = newTransform;
+        //}
 
         private void DrawHairLines(DrawingContext ctx)
         {
@@ -323,9 +325,10 @@ namespace BigTree
         }
         private void DrawNode(DrawingContext ctx, Node node)
         {
+            var zoom = ctx.Zoom;
             var size = ctx.GetNodeSize(node.NodeType);
             var fill = node.NodeType > _colorBrushes.Length ? _colorBrushes.Last() : _colorBrushes[node.NodeType];
-            DrawEllipse(ctx, node.Position.X, node.Position.Y, size, size, fill);
+            DrawEllipse(ctx, node.Position.X * zoom, node.Position.Y * zoom, size, size, fill);
         }
         private void DrawEllipse(DrawingContext ctx, float x, float y, float width, float height, Brush fill)
         {
@@ -341,12 +344,13 @@ namespace BigTree
         }
         private void DrawLine(DrawingContext ctx, System.Drawing.PointF p1, System.Drawing.PointF p2, SolidColorBrush color)
         {
+            var zoom = ctx.Zoom;
             var line = new Line
             {
-                X1 = p1.X + ctx.X0,
-                Y1 = p1.Y + ctx.Y0,
-                X2 = p2.X + ctx.X0,
-                Y2 = p2.Y + ctx.Y0,
+                X1 = p1.X * zoom + ctx.X0,
+                Y1 = p1.Y * zoom + ctx.Y0,
+                X2 = p2.X * zoom + ctx.X0,
+                Y2 = p2.Y * zoom + ctx.Y0,
                 Stroke = color,
                 StrokeThickness = 1,
                 SnapsToDevicePixels = true,

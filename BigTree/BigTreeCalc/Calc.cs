@@ -15,7 +15,7 @@ namespace BigTreeCalc
         static float _repulsionPow = -2; //UNDONE: move to the tree state
         static float _repulsionMul = 500; //UNDONE: move to the tree state
         static float _rubberPow = 2; //UNDONE: move to the tree state
-        static float _rubberMul = 800;// 1000; //UNDONE: move to the tree state
+        static float _rubberMul = 800; //UNDONE: move to the tree state
 
         static float _dampingFactor = 0.40f; // Reduces oscillation
 
