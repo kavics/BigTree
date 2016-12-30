@@ -10,7 +10,10 @@
         <Canvas x:Name="canvas1" Margin="5,5,5,85" Visibility="Visible" MouseMove="canvas_MouseMove"/>
         <Canvas x:Name="canvas2" Margin="5,5,5,85" Visibility="Hidden" MouseMove="canvas_MouseMove"/>
 
-        <TextBox x:Name="quickPropertiesTextBox" Margin="10,0,10,42" TextWrapping="Wrap" Text="{Binding Path=QuickProperties}" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+        <Label x:Name="measuringTimeLabel" Content="Measuring time:" HorizontalAlignment="Left" Margin="14,0,0,42" Width="97" Height="27" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="measuringTimeTextBox" Margin="111,0,0,42" TextWrapping="Wrap" Text="{Binding Path=MeasuringTimeText}" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="131" />
+
+        <TextBox x:Name="quickPropertiesTextBox" Margin="397,0,10,42" TextWrapping="Wrap" Text="{Binding Path=QuickProperties}" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
 
         <Label x:Name="iterationLabel" Content="Iteration:" HorizontalAlignment="Left" Margin="14,0,0,10" Width="58" Height="27" VerticalAlignment="Bottom"/>
         <TextBox x:Name="iterationTextBox" HorizontalAlignment="Left" Margin="72,0,0,10" TextWrapping="Wrap" Text="{Binding Path=Iteration}" Width="40" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />

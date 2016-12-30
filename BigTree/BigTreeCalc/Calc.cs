@@ -25,16 +25,16 @@ namespace BigTreeCalc
             tree.State.RepulsionMax = 0;
             tree.State.RubberMax = 0;
 
-            var timer = Stopwatch.StartNew();
+            //var timer = Stopwatch.StartNew();
             CalculateRepulsion(tree);
-            Debug.WriteLine("Repulsion: " + timer.Elapsed);
-            timer.Reset();
+            //Debug.WriteLine("Repulsion: " + timer.Elapsed);
+            //timer.Reset();
             CalculateRubber(tree);
-            Debug.WriteLine("Rubber:    " + timer.Elapsed);
-            timer.Reset();
+            //Debug.WriteLine("Rubber:    " + timer.Elapsed);
+            //timer.Reset();
             CalculateNextPosition(tree);
-            Debug.WriteLine("Position:  " + timer.Elapsed);
-            timer.Stop();
+            //Debug.WriteLine("Position:  " + timer.Elapsed);
+            //timer.Stop();
         }
 
         private static void CalculateRepulsion(ITree<T> tree)

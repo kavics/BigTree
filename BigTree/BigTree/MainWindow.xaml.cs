@@ -119,6 +119,7 @@ namespace BigTree
             }
         }
 
+        private const float ForceEndPoint = 0.08f;
         private string _forceMax;
         public string ForceMax
         {
@@ -129,6 +130,21 @@ namespace BigTree
                 {
                     _forceMax = value;
                     OnPropertyChanged("ForceMax");
+                }
+            }
+        }
+
+        private DateTime _startTime;
+        private string _measuringTimeText;
+        public string MeasuringTimeText
+        {
+            get { return _measuringTimeText; }
+            set
+            {
+                if (value != _measuringTimeText)
+                {
+                    _measuringTimeText = value;
+                    OnPropertyChanged("MeasuringTimeText");
                 }
             }
         }
@@ -252,6 +268,13 @@ namespace BigTree
 
             Continue();
 
+            _startTime = DateTime.Now;
+
+            DispatcherTimer measuringTimer = new DispatcherTimer();
+            measuringTimer.Tick += new EventHandler(measuringTimer_Tick);
+            measuringTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            measuringTimer.Start();
+
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 10);
@@ -262,6 +285,14 @@ namespace BigTree
             Recalc(_tree);
             this.ForceMax = _tree.State.ForceMax.ToString("n3");
             Redraw(_tree.Root);
+        }
+        private void measuringTimer_Tick(object sender, EventArgs e)
+        {
+            var time = DateTime.Now - _startTime;
+            MeasuringTimeText = time.ToString();
+            var f = _tree.State.ForceMax;
+            if (0 < f && f < ForceEndPoint)
+                ((DispatcherTimer)sender)?.Stop();
         }
 
         private void Recalc(Tree tree)
