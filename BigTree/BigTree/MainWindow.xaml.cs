@@ -365,7 +365,7 @@ namespace BigTree
             var mx = mousePosition.X - canvas1.ActualWidth / 2 - OffsetX;
             var my = mousePosition.Y - canvas1.ActualHeight / 2 - OffsetY;
 
-            var content = SearchContentByPosition(_tree.Root, mx, my) as SnContent;
+            var content = SearchContentByPosition(_tree.Root, mx / Zoom, my / Zoom) as SnContent;
 
             //QuickProperties = $"[{mx},{my}]: {content?.Name ?? string.Empty}";
             QuickProperties = content?.Name ?? string.Empty;
@@ -380,6 +380,23 @@ namespace BigTree
                 if ((result = SearchContentByPosition(child, mx, my)) != null)
                     return result;
             return null;
+        }
+
+        private void zoomInButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateZoomText(20);
+        }
+        private void zoomOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateZoomText(-20);
+        }
+        private void UpdateZoomText(int delta)
+        {
+            var zoom = Convert.ToInt32(Zoom * 100 + delta);
+            zoom = zoom / 10;
+            zoom = zoom * 10;
+            zoom = Math.Max(zoom, 10);
+            ZoomText = zoom.ToString();
         }
     }
 }

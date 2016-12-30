@@ -28,9 +28,12 @@
         <TextBox x:Name="OffseXTextBox" HorizontalAlignment="Left" Margin="561,0,0,10" TextWrapping="Wrap" Text="{Binding Path=OffsetXText}" Width="40" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
         <TextBox x:Name="OffseYTextBox" HorizontalAlignment="Left" Margin="606,0,0,10" TextWrapping="Wrap" Text="{Binding Path=OffsetYText}" Width="40" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
 
-        <Button x:Name="startButton" Content="{Binding Path=StartButtonText}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="60" Click="startButton_Click" RenderTransformOrigin="0.96,0.531" Height="27" VerticalAlignment="Bottom"/>
         <Label x:Name="ZoomLabel" Content="Zoom:" HorizontalAlignment="Left" Margin="651,0,0,10" Width="45" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
         <TextBox x:Name="ZoomTextBox" HorizontalAlignment="Left" Margin="696,0,0,10" TextWrapping="Wrap" Text="{Binding ZoomText}" Width="40" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
         <Label x:Name="PercentLabel" Content="%" HorizontalAlignment="Left" Margin="736,0,0,10" Width="21" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
+        <Button x:Name="zoomInButton" Content="+" HorizontalAlignment="Left" Margin="765,0,0,24" Padding="0,-4,0,0" Width="19" RenderTransformOrigin="0.96,0.531" Height="13" VerticalAlignment="Bottom" Click="zoomInButton_Click"/>
+        <Button x:Name="zoomOutButton" Content="-" HorizontalAlignment="Left" Margin="765,0,0,10" Padding="0,-4,0,0" Width="19" RenderTransformOrigin="0.756,0.568" Height="13" VerticalAlignment="Bottom" Click="zoomOutButton_Click"/>
+
+        <Button x:Name="startButton" Content="{Binding Path=StartButtonText}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="60" Click="startButton_Click" RenderTransformOrigin="0.96,0.531" Height="27" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
