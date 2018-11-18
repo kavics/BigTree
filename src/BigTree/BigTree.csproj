@@ -114,16 +114,16 @@
     <Resource Include="_Types.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BigTreeCalc\BigTreeCalc.csproj">
-      <Project>{bba17000-db10-457c-86ba-61c68acfab55}</Project>
-      <Name>BigTreeCalc</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="gyeby.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="_nodes_midtree.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BigTree.Calc\BigTree.Calc.csproj">
+      <Project>{913f47ae-4c1c-44df-b8a0-a64c9c9d7e2c}</Project>
+      <Name>BigTree.Calc</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

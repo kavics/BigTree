@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace BigTreeCalc
+namespace BigTree.Calc
 {
     public class NodeCalculationState
     {

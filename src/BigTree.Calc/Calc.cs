@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BigTreeCalc
+namespace BigTree.Calc
 {
     public class Calc<T> where T : INode
     {

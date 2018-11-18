@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BigTreeCalc
+namespace BigTree.Calc
 {
     public interface INode
     {

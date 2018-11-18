@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BigTreeCalc
+namespace BigTree.Calc
 {
     /// <summary>
     /// Random number generator helpers.
