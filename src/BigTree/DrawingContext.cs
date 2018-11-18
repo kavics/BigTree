@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace BigTree
 {
-    class DrawingContext
+    public class DrawingContext
     {
         public Canvas Canvas { get; private set; }
         public double X0 { get; private set; }

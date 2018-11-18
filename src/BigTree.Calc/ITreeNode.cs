@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace BigTree.Calc
 {
-    public interface INode
+    public interface ITreeNode
     {
         PointF Position { get; set; }
-        INode Parent { get; }
-        IEnumerable<INode> Children { get; }
+        ITreeNode Parent { get; }
+        IEnumerable<ITreeNode> Children { get; }
 
         NodeCalculationState State { get; }
     }

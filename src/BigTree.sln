@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigTree", "BigTree\BigTree.csproj", "{ECF8F795-E44A-4B88-B6B7-35F14D1AE8D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigTree.Calc", "BigTree.Calc\BigTree.Calc.csproj", "{913F47AE-4C1C-44DF-B8A0-A64C9C9D7E2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigTree.Calc", "BigTree.Calc\BigTree.Calc.csproj", "{913F47AE-4C1C-44DF-B8A0-A64C9C9D7E2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigTree.Renderers", "BigTree.Renderers\BigTree.Renderers.csproj", "{72E95E14-8D65-441B-9196-E4BA64139E69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{913F47AE-4C1C-44DF-B8A0-A64C9C9D7E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{913F47AE-4C1C-44DF-B8A0-A64C9C9D7E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{913F47AE-4C1C-44DF-B8A0-A64C9C9D7E2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E95E14-8D65-441B-9196-E4BA64139E69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E95E14-8D65-441B-9196-E4BA64139E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E95E14-8D65-441B-9196-E4BA64139E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E95E14-8D65-441B-9196-E4BA64139E69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

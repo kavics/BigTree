@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace BigTree
 {
     [DebuggerDisplay("Id:{Id}, Parent:{ParentId}, IsSys:{IsSystem}, Type:{NodeType}")]
-    internal class SnContent : Node
+    internal class SnContent : TreeNode
     {
         // NodeId ParentNodeId    IsSystem NodeTypeId  Type
         public int Id { get; set; }
