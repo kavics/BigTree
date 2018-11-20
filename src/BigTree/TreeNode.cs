@@ -12,6 +12,7 @@ namespace BigTree
     {
         public PointF Position { get; set; }
         public int NodeType { get; set; }
+        public string Name { get; set; }
         public TreeNode Parent { get; private set; }
         public List<TreeNode> Children { get; private set; }
 
