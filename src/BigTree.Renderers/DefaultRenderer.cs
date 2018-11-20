@@ -40,21 +40,21 @@ namespace BigTree.Renderers
                 Fill = fill,
             });
         }
-        private void DrawLine(DrawingContext ctx, System.Drawing.PointF p1, System.Drawing.PointF p2, SolidColorBrush color)
-        {
-            var zoom = ctx.Zoom;
-            var line = new Line
-            {
-                X1 = p1.X * zoom + ctx.X0,
-                Y1 = p1.Y * zoom + ctx.Y0,
-                X2 = p2.X * zoom + ctx.X0,
-                Y2 = p2.Y * zoom + ctx.Y0,
-                Stroke = color,
-                StrokeThickness = 1,
-                SnapsToDevicePixels = true,
-            };
-            line.SetValue(RenderOptions.EdgeModeProperty, EdgeMode.Aliased);
-            ctx.Canvas.Children.Add(line);
-        }
+        //private void DrawLine(DrawingContext ctx, System.Drawing.PointF p1, System.Drawing.PointF p2, SolidColorBrush color)
+        //{
+        //    var zoom = ctx.Zoom;
+        //    var line = new Line
+        //    {
+        //        X1 = p1.X * zoom + ctx.X0,
+        //        Y1 = p1.Y * zoom + ctx.Y0,
+        //        X2 = p2.X * zoom + ctx.X0,
+        //        Y2 = p2.Y * zoom + ctx.Y0,
+        //        Stroke = color,
+        //        StrokeThickness = 1,
+        //        SnapsToDevicePixels = true,
+        //    };
+        //    line.SetValue(RenderOptions.EdgeModeProperty, EdgeMode.Aliased);
+        //    ctx.Canvas.Children.Add(line);
+        //}
     }
 }

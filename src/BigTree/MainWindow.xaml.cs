@@ -267,8 +267,9 @@ namespace BigTree
         {
             _tree = CreateTree();
 
-            var rendererTypes = TypeResolver.GetTypesByInterface(typeof(INodeRenderer));
-            _nodeRenderer = (INodeRenderer)Activator.CreateInstance(rendererTypes.First());
+            var rendererTypes = TypeResolver.GetTypesByInterface(typeof(INodeRenderer))
+                .ToDictionary(t => t.Name, t => t);
+            _nodeRenderer = (INodeRenderer)Activator.CreateInstance(rendererTypes["Renderer1"]);
 
             Redraw(_tree.Root);
 
