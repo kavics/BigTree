@@ -13,13 +13,12 @@ namespace BigTree.Renderers
 {
     public class Renderer1 : INodeRenderer
     {
-        //static readonly double DefaultFontSize = 6.0d;
         static readonly Typeface DefaultTypeface = new Typeface(
             new FontFamily("Arial"), FontStyles.Normal, FontWeights.Normal, FontStretches.Normal);
 
-        static SolidColorBrush _blackBrush = new SolidColorBrush { Color = Colors.Black };
-        static SolidColorBrush _yellowBrush = new SolidColorBrush { Color = Colors.LightBlue, Opacity = 1.0d };
-        static SolidColorBrush _whiteBrush = new SolidColorBrush { Color = Colors.White, Opacity = 100 };
+        //static SolidColorBrush _blackBrush = new SolidColorBrush { Color = Colors.Black };
+        //static SolidColorBrush _yellowBrush = new SolidColorBrush { Color = Colors.LightBlue, Opacity = 1.0d };
+        //static SolidColorBrush _whiteBrush = new SolidColorBrush { Color = Colors.White, Opacity = 100 };
 
         public void Render(TreeNode node, DrawingContext context)
         {
@@ -36,8 +35,8 @@ namespace BigTree.Renderers
                 Height = height,
                 Margin = new Thickness(x - width / 2 + ctx.X0, y - height / 2 + ctx.Y0, 0, 0),
                 StrokeThickness = 1,
-                Stroke = _blackBrush,
-                Fill = _blackBrush,
+                Stroke = Brushes.Black,
+                Fill = Brushes.Black,
             });
         }
         private void DrawText(DrawingContext ctx, string text, float x, float y)

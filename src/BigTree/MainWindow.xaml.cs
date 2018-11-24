@@ -118,7 +118,7 @@ namespace BigTree
                 {
                     _itemSizeText = value;
                     double d;
-                    if (!double.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out d))
+                    if (!double.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out d))
                         d = 6d;
                     ItemSize = d;
                     OnPropertyChanged(nameof(ItemSizeText));
@@ -445,17 +445,17 @@ namespace BigTree
         }
         private void sizePlusButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateItemSizeText(1);
+            UpdateItemSizeText(0.5);
         }
 
         private void sizeMinusButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateItemSizeText(-1);
+            UpdateItemSizeText(-0.5);
         }
         private void UpdateItemSizeText(double delta)
         {
             var itemSize = ItemSize + delta;
-            itemSize = Math.Max(itemSize, 4.0d);
+            itemSize = Math.Max(itemSize, 1.0d);
             ItemSizeText = itemSize.ToString();
         }
     }
