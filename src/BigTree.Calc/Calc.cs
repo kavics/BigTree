@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BigTree.Calc
 {
-    public class Calc<T> where T : INode
+    public class Calc<T> where T : ITreeNode
     {
         const float FORCELIMIT = 10.0f;
 
@@ -44,7 +44,7 @@ namespace BigTree.Calc
                 for (int j = i + 1; j < nodes.Length; j++)
                     CalculateRepulsion(nodes[i], nodes[j]);
         }
-        private static void CalculateRepulsion(INode n1, INode n2)
+        private static void CalculateRepulsion(ITreeNode n1, ITreeNode n2)
         {
             if (n1 != n2)
             {
@@ -75,7 +75,7 @@ namespace BigTree.Calc
                 if (node.Parent != null)
                     CalculateRubber(node, node.Parent);
         }
-        private static void CalculateRubber(INode n1, INode n2)
+        private static void CalculateRubber(ITreeNode n1, ITreeNode n2)
         {
             if (n1 != n2)
             {

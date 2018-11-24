@@ -1,4 +1,5 @@
 ﻿using BigTree.Calc;
+using SenseNet.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,17 +39,19 @@ namespace BigTree
             OffsetXText = "0";
             OffsetYText = "0";
             ZoomText = "100";
+            ItemSizeText = "6";
         }
 
-        static SolidColorBrush _redBrush = new SolidColorBrush { Color = Colors.Red };
-        static SolidColorBrush _yellowBrush = new SolidColorBrush { Color = Colors.Orange };
-        static SolidColorBrush _blueBrush = new SolidColorBrush { Color = Colors.Blue };
-        static SolidColorBrush _greenBrush = new SolidColorBrush { Color = Colors.Green };
-        static SolidColorBrush _blackBrush = new SolidColorBrush { Color = Colors.Black };
-        static SolidColorBrush _grayBrush = new SolidColorBrush { Color = Colors.DarkGray };
-        SolidColorBrush[] _colorBrushes = new[] { _redBrush, _yellowBrush, _blueBrush, _greenBrush, _blackBrush, _grayBrush };
+        //static SolidColorBrush _redBrush = new SolidColorBrush { Color = Colors.Red };
+        //static SolidColorBrush _yellowBrush = new SolidColorBrush { Color = Colors.Orange };
+        //static SolidColorBrush _blueBrush = new SolidColorBrush { Color = Colors.Blue };
+        //static SolidColorBrush _greenBrush = new SolidColorBrush { Color = Colors.Green };
+        //static SolidColorBrush _blackBrush = new SolidColorBrush { Color = Colors.Black };
+        //static SolidColorBrush _grayBrush = new SolidColorBrush { Color = Colors.DarkGray };
+        //SolidColorBrush[] _colorBrushes = new[] { _redBrush, _yellowBrush, _blueBrush, _greenBrush, _blackBrush, _grayBrush };
 
         private Tree _tree;
+        private INodeRenderer _nodeRenderer;
 
         private string _offsetXText;
         public string OffsetXText
@@ -104,6 +107,25 @@ namespace BigTree
             }
         }
         public double Zoom { get; set; }
+
+        private string _itemSizeText;
+        public string ItemSizeText
+        {
+            get { return _itemSizeText; }
+            set
+            {
+                if (value != _itemSizeText)
+                {
+                    _itemSizeText = value;
+                    double d;
+                    if (!double.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out d))
+                        d = 6d;
+                    ItemSize = d;
+                    OnPropertyChanged(nameof(ItemSizeText));
+                }
+            }
+        }
+        public double ItemSize { get; set; }
 
         private int _iteration;
         public int Iteration
@@ -251,7 +273,7 @@ namespace BigTree
                     AppDomain.CurrentDomain.BaseDirectory)));
 
             var nodes = new TreeReader<SnContent>(
-                new StreamReader(IO.Path.Combine(directory, "_Nodes_smalltree.txt")), SnContent.Parse)
+                new StreamReader(IO.Path.Combine(directory, "_nodes_smalltree.txt")), SnContent.Parse)
                 .ToList();
 
             var types = new TreeReader<SnContentType>(
@@ -264,6 +286,13 @@ namespace BigTree
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _tree = CreateTree();
+
+            var rendererTypes = TypeResolver.GetTypesByInterface(typeof(INodeRenderer))
+                .ToDictionary(t => t.Name, t => t);
+            _nodeRenderer = (INodeRenderer)Activator.CreateInstance(rendererTypes["Renderer1"]);
+
+            // Zoom = 3.0d;
+
             Redraw(_tree.Root);
 
             Continue();
@@ -304,7 +333,7 @@ namespace BigTree
             CalcTime = timer.Elapsed.ToString();
         }
 
-        private void Redraw(Node node)
+        private void Redraw(TreeNode node)
         {
             if (_paused)
                 return;
@@ -314,7 +343,7 @@ namespace BigTree
             var active = canvas1.IsVisible ? canvas1 : canvas2;
             var inactive = canvas1.IsVisible ? canvas2 : canvas1;
 
-            var ctx = new DrawingContext(inactive, OffsetX, OffsetY, Zoom.ToSingle());
+            var ctx = new DrawingContext(inactive, OffsetX, OffsetY, Zoom.ToSingle(), ItemSize.ToSingle());
 
             inactive.Children.Clear();
             DrawHairLines(ctx);
@@ -345,7 +374,7 @@ namespace BigTree
             DrawLine(ctx, new System.Drawing.PointF(-width - x0, 0.0f), new System.Drawing.PointF(width - x0, 0.0f), Brushes.Gray);
             DrawLine(ctx, new System.Drawing.PointF(0.0f, -height - y0), new System.Drawing.PointF(0.0f, height - y0), Brushes.Gray);
         }
-        private void DrawTree(DrawingContext ctx, Node root)
+        private void DrawTree(DrawingContext ctx, TreeNode root)
         {
             foreach (var child in root.Children)
             {
@@ -354,24 +383,9 @@ namespace BigTree
             }
             DrawNode(ctx, root);
         }
-        private void DrawNode(DrawingContext ctx, Node node)
+        private void DrawNode(DrawingContext ctx, TreeNode node)
         {
-            var zoom = ctx.Zoom;
-            var size = ctx.GetNodeSize(node.NodeType);
-            var fill = node.NodeType > _colorBrushes.Length ? _colorBrushes.Last() : _colorBrushes[node.NodeType];
-            DrawEllipse(ctx, node.Position.X * zoom, node.Position.Y * zoom, size, size, fill);
-        }
-        private void DrawEllipse(DrawingContext ctx, float x, float y, float width, float height, Brush fill)
-        {
-            ctx.Canvas.Children.Add(new Ellipse
-            {
-                Width = width,
-                Height = height,
-                Margin = new Thickness(x - width / 2 + ctx.X0, y - height / 2 + ctx.Y0, 0, 0),
-                StrokeThickness = 1,
-                Stroke = fill, // _blackBrush,
-                Fill = fill,
-            });
+            _nodeRenderer.Render(node, ctx);
         }
         private void DrawLine(DrawingContext ctx, System.Drawing.PointF p1, System.Drawing.PointF p2, SolidColorBrush color)
         {
@@ -402,11 +416,11 @@ namespace BigTree
             QuickProperties = content?.Name ?? string.Empty;
         }
 
-        private INode SearchContentByPosition(INode node, double mx, double my)
+        private ITreeNode SearchContentByPosition(ITreeNode node, double mx, double my)
         {
             if (Math.Abs(node.Position.X - mx) < 4 && Math.Abs(node.Position.Y - my) < 4)
                 return node;
-            INode result;
+            ITreeNode result;
             foreach (var child in node.Children)
                 if ((result = SearchContentByPosition(child, mx, my)) != null)
                     return result;
@@ -428,6 +442,21 @@ namespace BigTree
             zoom = zoom * 10;
             zoom = Math.Max(zoom, 10);
             ZoomText = zoom.ToString();
+        }
+        private void sizePlusButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateItemSizeText(0.5);
+        }
+
+        private void sizeMinusButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateItemSizeText(-0.5);
+        }
+        private void UpdateItemSizeText(double delta)
+        {
+            var itemSize = ItemSize + delta;
+            itemSize = Math.Max(itemSize, 1.0d);
+            ItemSizeText = itemSize.ToString();
         }
     }
 }

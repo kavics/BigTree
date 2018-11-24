@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BigTree
 {
     [DebuggerDisplay("Id:{Id}, Parent:{ParentId}, Name:{Name}")]
-    class SnContentType : Node
+    class SnContentType : TreeNode
     {
         public int Id { get; set; }
         public int ParentId { get; set; }

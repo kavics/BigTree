@@ -10,13 +10,12 @@ using System.Diagnostics;
 namespace BigTree
 {
     [DebuggerDisplay("Id:{Id}, Parent:{ParentId}, IsSys:{IsSystem}, Type:{NodeType}")]
-    internal class SnContent : Node
+    internal class SnContent : TreeNode
     {
         // NodeId ParentNodeId    IsSystem NodeTypeId  Type
         public int Id { get; set; }
         public int ParentId { get; set; }
         public bool IsSystem { get; set; }
-        public string Name { get; set; }
         public SnContentType ContentType { get; set; }
 
         private static readonly char[] _split = "\t,;".ToCharArray();

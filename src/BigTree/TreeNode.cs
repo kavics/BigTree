@@ -8,31 +8,32 @@ using System.Drawing;
 
 namespace BigTree
 {
-    class Node : INode
+    public class TreeNode : ITreeNode
     {
         public PointF Position { get; set; }
         public int NodeType { get; set; }
-        public Node Parent { get; private set; }
-        public List<Node> Children { get; private set; }
+        public string Name { get; set; }
+        public TreeNode Parent { get; private set; }
+        public List<TreeNode> Children { get; private set; }
 
         public NodeCalculationState State { get; private set; }
 
-        IEnumerable<INode> INode.Children
+        IEnumerable<ITreeNode> ITreeNode.Children
         {
             get { return Children; }
         }
-        INode INode.Parent
+        ITreeNode ITreeNode.Parent
         {
             get { return Parent; }
         }
 
-        public Node()
+        public TreeNode()
         {
-            Children = new List<Node>();
+            Children = new List<TreeNode>();
             State = new NodeCalculationState();
         }
 
-        public void AddChild(Node node)
+        public void AddChild(TreeNode node)
         {
             Children.Add(node);
             node.Parent = this;

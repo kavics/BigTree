@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BigTree.Calc
 {
-    public interface ITree<T> where T : INode
+    public interface ITree<T> where T : ITreeNode
     {
         IDictionary<int, T> Nodes { get; }
         T Root { get; }
