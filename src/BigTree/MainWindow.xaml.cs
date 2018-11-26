@@ -63,7 +63,7 @@ namespace BigTree
                 {
                     _offsetXText = value;
                     double d = 0.0;
-                    double.TryParse(value, out d);
+                    double.TryParse(value, NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.CurrentCulture, out d);
                     OffsetX = d;
                     OnPropertyChanged(nameof(OffsetXText));
                 }
@@ -81,7 +81,7 @@ namespace BigTree
                 {
                     _offsetYText = value;
                     double d = 0.0;
-                    double.TryParse(value, out d);
+                    double.TryParse(value, NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.CurrentCulture, out d);
                     OffsetY = d;
                     OnPropertyChanged(nameof(OffsetYText));
                 }
@@ -99,7 +99,7 @@ namespace BigTree
                 {
                     _zoomText = value;
                     double d;
-                    if (!double.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out d))
+                    if (!double.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out d))
                         d = 100d;
                     Zoom = d / 100d;
                     OnPropertyChanged(nameof(ZoomText));
@@ -404,16 +404,72 @@ namespace BigTree
             ctx.Canvas.Children.Add(line);
         }
 
+        private bool _offsetModeEnabled;
+        private object _offsetLock = new object();
+        private double _offsetStartX;
+        private double _offsetStartY;
+
         private void canvas_MouseMove(object sender, MouseEventArgs e)
         {
-            var mousePosition = e.GetPosition(canvas1);
-            var mx = mousePosition.X - canvas1.ActualWidth / 2 - OffsetX;
-            var my = mousePosition.Y - canvas1.ActualHeight / 2 - OffsetY;
+            if (!_offsetModeEnabled)
+            {
+                var mousePosition = e.GetPosition(canvas1);
+                var mx = mousePosition.X - canvas1.ActualWidth / 2 - OffsetX;
+                var my = mousePosition.Y - canvas1.ActualHeight / 2 - OffsetY;
 
-            var content = SearchContentByPosition(_tree.Root, mx / Zoom, my / Zoom) as SnContent;
+                // FIND NODE BY POSITION
+                var content = SearchContentByPosition(_tree.Root, mx / Zoom, my / Zoom) as SnContent;
 
-            //QuickProperties = $"[{mx},{my}]: {content?.Name ?? string.Empty}";
-            QuickProperties = content?.Name ?? string.Empty;
+                //QuickProperties = $"[{mx},{my}]: {content?.Name ?? string.Empty}";
+                QuickProperties = content?.Name ?? string.Empty;
+            }
+        }
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_offsetModeEnabled)
+                return;
+
+            lock (_offsetLock)
+            {
+                var mousePosition = e.GetPosition(this);
+                var mx = mousePosition.X;
+                var my = mousePosition.Y;
+
+                // MOVE SCREEN BY MOUSE DRAG
+                if (double.IsNaN(_offsetStartX))
+                {
+                    _offsetStartX = mx - OffsetX;
+                    _offsetStartY = my - OffsetY;
+                    Debug.WriteLine("Reset");
+                }
+                else
+                {
+                    var dx = (mx - _offsetStartX);
+                    var dy = (my - _offsetStartY);
+
+                    OffsetXText = dx.ToString(CultureInfo.CurrentCulture);
+                    OffsetYText = dy.ToString(CultureInfo.CurrentCulture);
+                    Debug.WriteLine(OffsetXText + " - " + OffsetYText);
+                }
+            }
+        }
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && e.ButtonState == MouseButtonState.Pressed)
+            {
+                _offsetModeEnabled = true;
+                _offsetStartX = double.NaN;
+                _offsetStartY = double.NaN;
+            }
+        }
+        private void Window_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && e.ButtonState != MouseButtonState.Pressed)
+            {
+                _offsetModeEnabled = false;
+                _offsetStartX = double.NaN;
+                _offsetStartY = double.NaN;
+            }
         }
 
         private ITreeNode SearchContentByPosition(ITreeNode node, double mx, double my)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BigTree"
         mc:Ignorable="d"
-        Title="BigTree" Height="650" Width="979" Loaded="Window_Loaded">
+        Title="BigTree" Height="650" Width="979" Loaded="Window_Loaded" MouseMove="Window_MouseMove" MouseDown="Window_MouseDown" MouseUp="Window_MouseUp">
     <Grid Name="mainGrid">
         <Canvas x:Name="canvas1" Margin="5,5,5,85" Visibility="Visible" MouseMove="canvas_MouseMove"/>
         <Canvas x:Name="canvas2" Margin="5,5,5,85" Visibility="Hidden" MouseMove="canvas_MouseMove"/>
