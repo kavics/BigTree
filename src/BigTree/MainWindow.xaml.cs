@@ -29,12 +29,14 @@ namespace BigTree
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        private TraceWindow _traceWindow = new TraceWindow();
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindow()
         {
             InitializeComponent();
-            ForceMax = "";
+            _traceWindow.ForceMax = "";
             mainGrid.DataContext = this;
             OffsetXText = "0";
             OffsetYText = "0";
@@ -127,77 +129,10 @@ namespace BigTree
         }
         public double ItemSize { get; set; }
 
-        private int _iteration;
-        public int Iteration
-        {
-            get { return _iteration; }
-            set
-            {
-                if (value != _iteration)
-                {
-                    _iteration = value;
-                    OnPropertyChanged("Iteration");
-                }
-            }
-        }
 
         private const float ForceEndPoint = 0.08f;
-        private string _forceMax;
-        public string ForceMax
-        {
-            get { return _forceMax; }
-            set
-            {
-                if (value != _forceMax)
-                {
-                    _forceMax = value;
-                    OnPropertyChanged("ForceMax");
-                }
-            }
-        }
 
         private DateTime _startTime;
-        private string _measuringTimeText;
-        public string MeasuringTimeText
-        {
-            get { return _measuringTimeText; }
-            set
-            {
-                if (value != _measuringTimeText)
-                {
-                    _measuringTimeText = value;
-                    OnPropertyChanged("MeasuringTimeText");
-                }
-            }
-        }
-
-        private string _calcTime;
-        public string CalcTime
-        {
-            get { return _calcTime; }
-            set
-            {
-                if (value != _calcTime)
-                {
-                    _calcTime = value;
-                    OnPropertyChanged("CalcTime");
-                }
-            }
-        }
-
-        private string _drawTime;
-        public string DrawTime
-        {
-            get { return _drawTime; }
-            set
-            {
-                if (value != _drawTime)
-                {
-                    _drawTime = value;
-                    OnPropertyChanged("DrawTime");
-                }
-            }
-        }
 
         private bool _paused;
         public bool Paused
@@ -312,13 +247,13 @@ namespace BigTree
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             Recalc(_tree);
-            this.ForceMax = _tree.State.ForceMax.ToString("n3");
+            _traceWindow.ForceMax = _tree.State.ForceMax.ToString("n3");
             Redraw(_tree.Root);
         }
         private void measuringTimer_Tick(object sender, EventArgs e)
         {
             var time = DateTime.Now - _startTime;
-            MeasuringTimeText = time.ToString();
+            _traceWindow.MeasuringTimeText = time.ToString();
             var f = _tree.State.ForceMax;
             if (0 < f && f < ForceEndPoint)
                 ((DispatcherTimer)sender)?.Stop();
@@ -329,8 +264,8 @@ namespace BigTree
             var timer = Stopwatch.StartNew();
             Calc<SnContent>.NextState(tree);
             timer.Stop();
-            Iteration++;
-            CalcTime = timer.Elapsed.ToString();
+            _traceWindow.Iteration++;
+            _traceWindow.CalcTime = timer.Elapsed.ToString();
         }
 
         private void Redraw(TreeNode node)
@@ -353,7 +288,7 @@ namespace BigTree
             active.Visibility = Visibility.Hidden;
 
             timer.Stop();
-            DrawTime = timer.Elapsed.ToString();
+            _traceWindow.DrawTime = timer.Elapsed.ToString();
         }
 
         //private void DoZoom(double x0, double y0, Canvas canvas, double scale)
@@ -513,6 +448,39 @@ namespace BigTree
             var itemSize = ItemSize + delta;
             itemSize = Math.Max(itemSize, 1.0d);
             ItemSizeText = itemSize.ToString();
+        }
+
+        private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Debug.WriteLine($"Wheel: {e.Delta}");
+            UpdateZoomText(Math.Sign(e.Delta) * 20);
+
+
+            //var mousePosition = e.GetPosition(this);
+            //var mx = mousePosition.X - canvas1.ActualWidth / 2 - OffsetX;
+            //var my = mousePosition.Y - canvas1.ActualHeight / 2 - OffsetY;
+
+
+            //var dx = (mx - _offsetStartX);
+            //var dy = (my - _offsetStartY);
+
+            //OffsetXText = dx.ToString(CultureInfo.CurrentCulture);
+            //OffsetYText = dy.ToString(CultureInfo.CurrentCulture);
+
+        }
+
+        private void traceButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_traceWindow.IsVisible)
+                _traceWindow.Hide();
+            else
+                _traceWindow.Show();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            _traceWindow.Exit();
+            _traceWindow.Close();
         }
     }
 }
