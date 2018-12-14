@@ -5,27 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BigTree"
         mc:Ignorable="d"
-        Title="BigTree" Height="650" Width="979" Loaded="Window_Loaded" MouseMove="Window_MouseMove" MouseDown="Window_MouseDown" MouseUp="Window_MouseUp">
+        Title="BigTree" Height="650" Width="979" Loaded="Window_Loaded" MouseMove="Window_MouseMove" MouseDown="Window_MouseDown" MouseUp="Window_MouseUp" MouseWheel="Window_MouseWheel" Closing="Window_Closing">
     <Grid Name="mainGrid">
         <Canvas x:Name="canvas1" Margin="5,5,5,85" Visibility="Visible" MouseMove="canvas_MouseMove"/>
         <Canvas x:Name="canvas2" Margin="5,5,5,85" Visibility="Hidden" MouseMove="canvas_MouseMove"/>
 
-        <Label x:Name="measuringTimeLabel" Content="Measuring time:" HorizontalAlignment="Left" Margin="14,0,0,42" Width="97" Height="27" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="measuringTimeTextBox" Margin="111,0,0,42" TextWrapping="Wrap" Text="{Binding Path=MeasuringTimeText}" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="131" />
-
-        <TextBox x:Name="quickPropertiesTextBox" Margin="397,0,10,42" TextWrapping="Wrap" Text="{Binding Path=QuickProperties}" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
-
-        <Label x:Name="iterationLabel" Content="Iteration:" HorizontalAlignment="Left" Margin="14,0,0,10" Width="58" Height="27" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="iterationTextBox" HorizontalAlignment="Left" Margin="72,0,0,10" TextWrapping="Wrap" Text="{Binding Path=Iteration}" Width="40" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
-
-        <Label x:Name="forceMaxLabel" Content="Force:" HorizontalAlignment="Left" Margin="117,0,0,10" Width="41" Height="27" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="forceMaxTextBox" HorizontalAlignment="Left" Margin="163,0,0,10" TextWrapping="Wrap" Text="{Binding Path=ForceMax}" Width="40" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
-
-        <Label x:Name="CalcTimeLabel" Content="Calc:" HorizontalAlignment="Left" Margin="208,0,0,10" Width="34" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="2.698,0.37"/>
-        <TextBox x:Name="CalcTimeTextBox" HorizontalAlignment="Left" Margin="242,0,0,10" TextWrapping="Wrap" Text="{Binding Path=CalcTime}" Width="110" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
-
-        <Label x:Name="DrawTimeLabel" Content="Draw:" HorizontalAlignment="Left" Margin="357,0,0,10" Width="40" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
-        <TextBox x:Name="DrawTimeTextBox" HorizontalAlignment="Left" Margin="397,0,0,10" TextWrapping="Wrap" Text="{Binding Path=DrawTime}" Width="110" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+        <TextBox x:Name="quickPropertiesTextBox" Margin="67,0,459,10" TextWrapping="Wrap" Text="{Binding Path=QuickProperties}" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
 
         <Label x:Name="OffsetLabel" Content="Offset:" HorizontalAlignment="Left" Margin="512,0,0,10" Width="49" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
         <TextBox x:Name="OffseXTextBox" HorizontalAlignment="Left" Margin="561,0,0,10" TextWrapping="Wrap" Text="{Binding Path=OffsetXText}" Width="40" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
@@ -42,6 +27,17 @@
         <Button x:Name="sizePlusButton" Content="+" HorizontalAlignment="Left" Margin="871,0,0,24" Padding="0,-4,0,0" Width="19" RenderTransformOrigin="0.96,0.531" Height="13" VerticalAlignment="Bottom" Click="sizePlusButton_Click"/>
         <Button x:Name="sizeMinusButton" Content="-" HorizontalAlignment="Left" Margin="871,0,0,10" Padding="0,-4,0,0" Width="19" RenderTransformOrigin="0.756,0.568" Height="13" VerticalAlignment="Bottom" Click="sizeMinusButton_Click"/>
 
-        <Button x:Name="startButton" Content="{Binding Path=StartButtonText}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="60" Click="startButton_Click" RenderTransformOrigin="0.96,0.531" Height="27" VerticalAlignment="Bottom"/>
+        <Button x:Name="startButton" Content="{Binding Path=StartButtonText}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="60" RenderTransformOrigin="0.96,0.531" Height="27" VerticalAlignment="Bottom"/>
+
+        <Button x:Name="traceButton" HorizontalAlignment="Left" Margin="10,0,0,10" Width="40" Height="27"
+                Background="Transparent"
+                Click="traceButton_Click" VerticalAlignment="Bottom">
+            <!--<Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <ContentPresenter Content="{TemplateBinding Content}"/>
+                </ControlTemplate>
+            </Button.Template>-->
+            <Image Name="Button1_Image" Source="Images/eye-626x626.jpg"/>
+        </Button>
     </Grid>
 </Window>
