@@ -185,12 +185,12 @@ namespace BigTree
         private void Pause()
         {
             Paused = true;
-            StartButtonText = "||";
+            StartButtonText = ">";
         }
         private void Continue()
         {
             Paused = false;
-            StartButtonText = ">";
+            StartButtonText = "||";
         }
 
 
@@ -200,7 +200,7 @@ namespace BigTree
                     AppDomain.CurrentDomain.BaseDirectory)));
 
             var nodes = new TreeReader<SnContent>(
-                new StreamReader(IO.Path.Combine(directory, "_nodes_smalltree.txt")), SnContent.Parse)
+                new StreamReader(IO.Path.Combine(directory, "_nodes_midtree.txt")), SnContent.Parse)
                 .ToList();
 
             var types = new TreeReader<SnContentType>(
@@ -216,7 +216,8 @@ namespace BigTree
 
             var rendererTypes = TypeResolver.GetTypesByInterface(typeof(INodeRenderer))
                 .ToDictionary(t => t.Name, t => t);
-            _nodeRenderer = (INodeRenderer)Activator.CreateInstance(rendererTypes["Renderer1"]);
+            _nodeRenderer = (INodeRenderer)Activator.CreateInstance(rendererTypes["DefaultRenderer"]);
+            //_nodeRenderer = (INodeRenderer)Activator.CreateInstance(rendererTypes["Renderer1"]);
 
             // Zoom = 3.0d;
             RecalcAsync(_tree);
