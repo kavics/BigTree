@@ -5,22 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BigTree"
         mc:Ignorable="d"
-        Title="Trace" Height="223.334" Width="275.432" Closing="Window_Closing">
+        Title="Trace" Height="259.334" Width="264.099" Closing="Window_Closing">
     <Grid Name="mainGrid">
         <Label x:Name="measuringTimeLabel" Content="Measuring time:" HorizontalAlignment="Left" Margin="10,42,0,0" Width="97" Height="27" VerticalAlignment="Top"/>
-        <TextBox x:Name="measuringTimeTextBox" Margin="112,42,0,0" TextWrapping="Wrap" Text="{Binding Path=MeasuringTimeText}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="131" Height="27" VerticalAlignment="Top" />
+        <TextBox x:Name="measuringTimeTextBox" Margin="112,42,0,0" TextWrapping="Wrap" Text="{Binding Path=MeasuringTimeText}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="130" Height="27" VerticalAlignment="Top" />
 
         <Label x:Name="iterationLabel" Content="Iteration:" HorizontalAlignment="Left" Margin="10,15,0,0" Width="97" Height="27" VerticalAlignment="Top"/>
-        <TextBox x:Name="iterationTextBox" HorizontalAlignment="Left" Margin="112,15,0,0" TextWrapping="Wrap" Text="{Binding Path=Iteration}" Width="131" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
+        <TextBox x:Name="iterationTextBox" HorizontalAlignment="Left" Margin="112,15,0,0" TextWrapping="Wrap" Text="{Binding Path=Iteration}" Width="130" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
 
         <Label x:Name="forceMaxLabel" Content="Force:" HorizontalAlignment="Left" Margin="10,69,0,0" Width="97" Height="27" VerticalAlignment="Top"/>
-        <TextBox x:Name="forceMaxTextBox" HorizontalAlignment="Left" Margin="112,69,0,0" TextWrapping="Wrap" Text="{Binding Path=ForceMax}" Width="131" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
+        <TextBox x:Name="forceMaxTextBox" HorizontalAlignment="Left" Margin="112,69,0,0" TextWrapping="Wrap" Text="{Binding Path=ForceMax}" Width="130" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
 
         <Label x:Name="CalcTimeLabel" Content="Calc:" HorizontalAlignment="Left" Margin="10,96,0,0" Width="97" RenderTransformOrigin="2.698,0.37" Height="27" VerticalAlignment="Top"/>
-        <TextBox x:Name="CalcTimeTextBox" HorizontalAlignment="Left" Margin="112,96,0,0" TextWrapping="Wrap" Text="{Binding Path=CalcTime}" Width="131" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
+        <TextBox x:Name="CalcTimeTextBox" HorizontalAlignment="Left" Margin="112,96,0,0" TextWrapping="Wrap" Text="{Binding Path=CalcTime}" Width="130" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
 
         <Label x:Name="DrawTimeLabel" Content="Draw:" HorizontalAlignment="Left" Margin="10,123,0,0" Width="97" RenderTransformOrigin="3.744,0.556" Height="27" VerticalAlignment="Top"/>
-        <TextBox x:Name="DrawTimeTextBox" HorizontalAlignment="Left" Margin="112,123,0,0" TextWrapping="Wrap" Text="{Binding Path=DrawTime}" Width="131" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
+        <TextBox x:Name="DrawTimeTextBox" HorizontalAlignment="Left" Margin="112,123,0,0" TextWrapping="Wrap" Text="{Binding Path=DrawTime}" Width="130" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
+
+        <Label x:Name="CenterCoordsLabel" Content="Center coords:" HorizontalAlignment="Left" Margin="10,150,0,0" Width="97" RenderTransformOrigin="3.744,0.556" Height="27" VerticalAlignment="Top"/>
+        <TextBox x:Name="CenterCoordsXTextBox" HorizontalAlignment="Left" Margin="112,150,0,0" TextWrapping="Wrap" Text="{Binding Path=CenterCoords.X}" Width="65" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
+        <TextBox x:Name="CenterCoordsYTextBox" HorizontalAlignment="Left" Margin="177,150,0,0" TextWrapping="Wrap" Text="{Binding Path=CenterCoords.Y}" Width="65" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
+
+        <Label x:Name="MouseCoordsLabel" Content="Mouse coords:" HorizontalAlignment="Left" Margin="10,177,0,0" Width="97" RenderTransformOrigin="3.744,0.556" Height="27" VerticalAlignment="Top"/>
+        <TextBox x:Name="MouseCoordsXTextBox" HorizontalAlignment="Left" Margin="112,177,0,0" TextWrapping="Wrap" Text="{Binding Path=MouseCoords.X}" Width="65" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
+        <TextBox x:Name="MouseCoordsYTextBox" HorizontalAlignment="Left" Margin="177,177,0,0" TextWrapping="Wrap" Text="{Binding Path=MouseCoords.Y}" Width="65" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Top" />
 
     </Grid>
 </Window>
