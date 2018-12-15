@@ -26,7 +26,7 @@ namespace BigTree
             mainGrid.DataContext = this;
         }
 
-        private int _iteration; //UNDONE: move to the Trace window
+        private int _iteration;
         public int Iteration
         {
             get { return _iteration; }
@@ -41,7 +41,7 @@ namespace BigTree
         }
 
         private const float ForceEndPoint = 0.08f;
-        private string _forceMax; //UNDONE: move to the Trace window
+        private string _forceMax;
         public string ForceMax
         {
             get { return _forceMax; }
@@ -56,7 +56,7 @@ namespace BigTree
         }
 
         private DateTime _startTime;
-        private string _measuringTimeText; //UNDONE: move to the Trace window
+        private string _measuringTimeText;
         public string MeasuringTimeText
         {
             get { return _measuringTimeText; }
@@ -70,7 +70,7 @@ namespace BigTree
             }
         }
 
-        private string _calcTime; //UNDONE: move to the Trace window
+        private string _calcTime;
         public string CalcTime
         {
             get { return _calcTime; }
@@ -84,7 +84,7 @@ namespace BigTree
             }
         }
 
-        private string _drawTime; //UNDONE: move to the Trace window
+        private string _drawTime;
         public string DrawTime
         {
             get { return _drawTime; }
@@ -97,6 +97,35 @@ namespace BigTree
                 }
             }
         }
+
+        private Point _centerCoords;
+        public Point CenterCoords
+        {
+            get { return _centerCoords; }
+            set
+            {
+                if (value != _centerCoords)
+                {
+                    _centerCoords = value;
+                    OnPropertyChanged(nameof(CenterCoords));
+                }
+            }
+        }
+
+        private Point _mouseCoords;
+        public Point MouseCoords
+        {
+            get { return _mouseCoords; }
+            set
+            {
+                if (value != _mouseCoords)
+                {
+                    _mouseCoords = value;
+                    OnPropertyChanged(nameof(MouseCoords));
+                }
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

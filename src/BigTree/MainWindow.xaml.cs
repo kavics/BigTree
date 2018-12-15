@@ -44,14 +44,6 @@ namespace BigTree
             ItemSizeText = "6";
         }
 
-        //static SolidColorBrush _redBrush = new SolidColorBrush { Color = Colors.Red };
-        //static SolidColorBrush _yellowBrush = new SolidColorBrush { Color = Colors.Orange };
-        //static SolidColorBrush _blueBrush = new SolidColorBrush { Color = Colors.Blue };
-        //static SolidColorBrush _greenBrush = new SolidColorBrush { Color = Colors.Green };
-        //static SolidColorBrush _blackBrush = new SolidColorBrush { Color = Colors.Black };
-        //static SolidColorBrush _grayBrush = new SolidColorBrush { Color = Colors.DarkGray };
-        //SolidColorBrush[] _colorBrushes = new[] { _redBrush, _yellowBrush, _blueBrush, _greenBrush, _blackBrush, _grayBrush };
-
         private Tree _tree;
         private INodeRenderer _nodeRenderer;
 
@@ -243,6 +235,9 @@ namespace BigTree
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 10);
             dispatcherTimer.Start();
+
+            _traceWindow.Show();
+
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -290,15 +285,6 @@ namespace BigTree
             timer.Stop();
             _traceWindow.DrawTime = timer.Elapsed.ToString();
         }
-
-        //private void DoZoom(double x0, double y0, Canvas canvas, double scale)
-        //{
-        //    var transform = (MatrixTransform)canvas.RenderTransform;
-        //    var matrix = transform.Matrix;
-        //    matrix.ScaleAtPrepend(scale, scale, x0, y0);
-        //    var newTransform = new MatrixTransform(matrix);
-        //    canvas.RenderTransform = newTransform;
-        //}
 
         private void DrawHairLines(DrawingContext ctx)
         {
@@ -361,12 +347,16 @@ namespace BigTree
         }
         private void Window_MouseMove(object sender, MouseEventArgs e)
         {
+            var mousePosition = e.GetPosition(this);
+            _traceWindow.MouseCoords = new Point
+                ((mousePosition.X - canvas1.ActualWidth / 2 - OffsetX)/Zoom,
+                 (mousePosition.Y - canvas1.ActualHeight / 2 - OffsetY)/Zoom);
+
             if (!_offsetModeEnabled)
                 return;
 
             lock (_offsetLock)
             {
-                var mousePosition = e.GetPosition(this);
                 var mx = mousePosition.X;
                 var my = mousePosition.Y;
 
@@ -384,7 +374,8 @@ namespace BigTree
 
                     OffsetXText = dx.ToString(CultureInfo.CurrentCulture);
                     OffsetYText = dy.ToString(CultureInfo.CurrentCulture);
-                    Debug.WriteLine(OffsetXText + " - " + OffsetYText);
+                    _traceWindow.CenterCoords = new Point(dx, dy);
+                    //_traceWindow.MouseCoords = new Point(mx, my);
                 }
             }
         }
@@ -455,18 +446,17 @@ namespace BigTree
             Debug.WriteLine($"Wheel: {e.Delta}");
             UpdateZoomText(Math.Sign(e.Delta) * 20);
 
+            var sign = Math.Sign(e.Delta);
 
-            //var mousePosition = e.GetPosition(this);
-            //var mx = mousePosition.X - canvas1.ActualWidth / 2 - OffsetX;
-            //var my = mousePosition.Y - canvas1.ActualHeight / 2 - OffsetY;
+            var mousePosition = e.GetPosition(this);
+            var mx = (mousePosition.X - canvas1.ActualWidth / 2 - OffsetX) / Zoom;
+            var my = (mousePosition.Y - canvas1.ActualHeight / 2 - OffsetY) / Zoom;
 
+            var dx = mx / 5;
+            var dy = my / 5;
 
-            //var dx = (mx - _offsetStartX);
-            //var dy = (my - _offsetStartY);
-
-            //OffsetXText = dx.ToString(CultureInfo.CurrentCulture);
-            //OffsetYText = dy.ToString(CultureInfo.CurrentCulture);
-
+            OffsetXText = (OffsetX - sign * dx).ToString(CultureInfo.CurrentCulture);
+            OffsetYText = (OffsetY - sign * dy).ToString(CultureInfo.CurrentCulture);
         }
 
         private void traceButton_Click(object sender, RoutedEventArgs e)
