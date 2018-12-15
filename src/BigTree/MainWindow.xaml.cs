@@ -185,12 +185,12 @@ namespace BigTree
         private void Pause()
         {
             Paused = true;
-            StartButtonText = "||";
+            StartButtonText = ">";
         }
         private void Continue()
         {
             Paused = false;
-            StartButtonText = ">";
+            StartButtonText = "||";
         }
 
 
@@ -200,7 +200,7 @@ namespace BigTree
                     AppDomain.CurrentDomain.BaseDirectory)));
 
             var nodes = new TreeReader<SnContent>(
-                new StreamReader(IO.Path.Combine(directory, "_nodes_smalltree.txt")), SnContent.Parse)
+                new StreamReader(IO.Path.Combine(directory, "_nodes_midtree.txt")), SnContent.Parse)
                 .ToList();
 
             var types = new TreeReader<SnContentType>(
@@ -216,10 +216,11 @@ namespace BigTree
 
             var rendererTypes = TypeResolver.GetTypesByInterface(typeof(INodeRenderer))
                 .ToDictionary(t => t.Name, t => t);
-            _nodeRenderer = (INodeRenderer)Activator.CreateInstance(rendererTypes["Renderer1"]);
+            _nodeRenderer = (INodeRenderer)Activator.CreateInstance(rendererTypes["DefaultRenderer"]);
+            //_nodeRenderer = (INodeRenderer)Activator.CreateInstance(rendererTypes["Renderer1"]);
 
             // Zoom = 3.0d;
-
+            RecalcAsync(_tree);
             Redraw(_tree.Root);
 
             Continue();
@@ -233,15 +234,13 @@ namespace BigTree
 
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 10);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dispatcherTimer.Start();
 
             _traceWindow.Show();
-
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            Recalc(_tree);
             _traceWindow.ForceMax = _tree.State.ForceMax.ToString("n3");
             Redraw(_tree.Root);
         }
@@ -254,7 +253,16 @@ namespace BigTree
                 ((DispatcherTimer)sender)?.Stop();
         }
 
-        private void Recalc(Tree tree)
+        private async Task RecalcAsync(Tree tree)
+        {
+            while (true)
+            {
+                if (!_paused)
+                    await Task.Run(() => { RecalcOne(tree); });
+                await Task.Delay(TimeSpan.FromMilliseconds(10));
+            }
+        }
+        private void RecalcOne(Tree tree)
         {
             var timer = Stopwatch.StartNew();
             Calc<SnContent>.NextState(tree);
@@ -472,5 +480,6 @@ namespace BigTree
             _traceWindow.Exit();
             _traceWindow.Close();
         }
+
     }
 }
