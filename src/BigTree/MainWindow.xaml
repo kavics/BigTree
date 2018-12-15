@@ -27,7 +27,7 @@
         <Button x:Name="sizePlusButton" Content="+" HorizontalAlignment="Left" Margin="871,0,0,24" Padding="0,-4,0,0" Width="19" RenderTransformOrigin="0.96,0.531" Height="13" VerticalAlignment="Bottom" Click="sizePlusButton_Click"/>
         <Button x:Name="sizeMinusButton" Content="-" HorizontalAlignment="Left" Margin="871,0,0,10" Padding="0,-4,0,0" Width="19" RenderTransformOrigin="0.756,0.568" Height="13" VerticalAlignment="Bottom" Click="sizeMinusButton_Click"/>
 
-        <Button x:Name="startButton" Content="{Binding Path=StartButtonText}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="60" RenderTransformOrigin="0.96,0.531" Height="27" VerticalAlignment="Bottom"/>
+        <Button x:Name="startButton" Content="{Binding Path=StartButtonText}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="60" RenderTransformOrigin="0.96,0.531" Height="27" VerticalAlignment="Bottom" Click="startButton_Click"/>
 
         <Button x:Name="traceButton" HorizontalAlignment="Left" Margin="10,0,0,10" Width="40" Height="27"
                 Background="Transparent"
