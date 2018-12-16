@@ -199,13 +199,16 @@ namespace BigTree
             var directory = IO.Path.GetDirectoryName(IO.Path.GetDirectoryName(IO.Path.GetDirectoryName(
                     AppDomain.CurrentDomain.BaseDirectory)));
 
+            var treeName = "_nodes_smalltree.txt";
             var nodes = new TreeReader<SnContent>(
-                new StreamReader(IO.Path.Combine(directory, "_nodes_midtree.txt")), SnContent.Parse)
+                new StreamReader(IO.Path.Combine(directory, treeName)), SnContent.Parse)
                 .ToList();
 
             var types = new TreeReader<SnContentType>(
                 new StreamReader(IO.Path.Combine(directory, "_Types.txt")), SnContentType.Parse)
                 .ToList();
+
+            this.Title = "BigTree - " + treeName;
 
             return TreeBuilder.Build(nodes, types);
         }
@@ -481,5 +484,11 @@ namespace BigTree
             _traceWindow.Close();
         }
 
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            OffsetXText = "0";
+            OffsetYText = "0";
+            ZoomText = "100";
+        }
     }
 }

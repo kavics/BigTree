@@ -10,7 +10,7 @@
         <Canvas x:Name="canvas1" Margin="5,5,5,85" Visibility="Visible" MouseMove="canvas_MouseMove"/>
         <Canvas x:Name="canvas2" Margin="5,5,5,85" Visibility="Hidden" MouseMove="canvas_MouseMove"/>
 
-        <TextBox x:Name="quickPropertiesTextBox" Margin="67,0,459,10" TextWrapping="Wrap" Text="{Binding Path=QuickProperties}" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+        <TextBox x:Name="quickPropertiesTextBox" Margin="67,0,0,10" TextWrapping="Wrap" Text="{Binding Path=QuickProperties}" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="380" />
 
         <Label x:Name="OffsetLabel" Content="Offset:" HorizontalAlignment="Left" Margin="512,0,0,10" Width="49" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="3.744,0.556"/>
         <TextBox x:Name="OffseXTextBox" HorizontalAlignment="Left" Margin="561,0,0,10" TextWrapping="Wrap" Text="{Binding Path=OffsetXText}" Width="40" Height="27" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
@@ -39,5 +39,6 @@
             </Button.Template>-->
             <Image Name="Button1_Image" Source="Images/eye-626x626.jpg"/>
         </Button>
+        <Button Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Margin="452,0,0,10" Width="55" Click="ResetButton_Click" Height="27" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
