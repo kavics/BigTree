@@ -33,6 +33,11 @@ namespace BigTree
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private Point _pointOnClick; // Click Position for panning
+        private ScaleTransform _scaleTransform;
+        private TranslateTransform _translateTransform;
+        private TransformGroup _transformGroup;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -42,6 +47,15 @@ namespace BigTree
             OffsetYText = "0";
             ZoomText = "100";
             ItemSizeText = "6";
+
+            _translateTransform = new TranslateTransform();
+            _scaleTransform = new ScaleTransform();
+            _transformGroup = new TransformGroup();
+            _transformGroup.Children.Add(_translateTransform);
+            _transformGroup.Children.Add(_scaleTransform);
+
+            canvas1.RenderTransform = _transformGroup;
+            canvas2.RenderTransform = _transformGroup;
         }
 
         private Tree _tree;
@@ -240,7 +254,9 @@ namespace BigTree
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dispatcherTimer.Start();
 
-            _traceWindow.Show();
+            //_traceWindow.Show();
+
+            //Pause();
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -454,21 +470,35 @@ namespace BigTree
 
         private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Debug.WriteLine($"Wheel: {e.Delta}");
-            UpdateZoomText(Math.Sign(e.Delta) * 20);
+            Point mousePosition = e.GetPosition(canvas1);
+            //Actual Zoom
+            double zoomNow = Math.Round(canvas1.RenderTransform.Value.M11, 1);
+            //ZoomScale
+            double zoomScale = 0.1;
+            //Positive or negative zoom
+            double valZoom = e.Delta > 0 ? zoomScale : -zoomScale;
+            //Point de la souris pour le panning et zoom/dezoom
+            Point pointOnMove = e.GetPosition((FrameworkElement)canvas1.Parent);
+            //RenderTransformOrigin (doesn't fully working)
+            canvas1.RenderTransformOrigin = new Point(mousePosition.X / canvas1.ActualWidth, mousePosition.Y / canvas1.ActualHeight);
+            //Appel du zoom
+            DoZoom(new Point(mousePosition.X, mousePosition.Y), zoomNow + valZoom);
 
-            var sign = Math.Sign(e.Delta);
-
-            var mousePosition = e.GetPosition(this);
-            var mx = (mousePosition.X - canvas1.ActualWidth / 2 - OffsetX) / Zoom;
-            var my = (mousePosition.Y - canvas1.ActualHeight / 2 - OffsetY) / Zoom;
-
-            var dx = mx / 5;
-            var dy = my / 5;
-
-            OffsetXText = (OffsetX - sign * dx).ToString(CultureInfo.CurrentCulture);
-            OffsetYText = (OffsetY - sign * dy).ToString(CultureInfo.CurrentCulture);
         }
+        private void DoZoom(Point point, double scale)
+        {
+            //Calcul des centres selon la position de la souris
+            double centerX = (point.X - _translateTransform.X) / _scaleTransform.ScaleX;
+            double centerY = (point.Y - _translateTransform.Y) / _scaleTransform.ScaleY;
+            //Mise à l'échelle
+            _scaleTransform.ScaleX = scale;
+            _scaleTransform.ScaleY = scale;
+            //Retablissement du translate pour éviter un décalage
+            _translateTransform.X = point.X - centerX * _scaleTransform.ScaleX;
+            _translateTransform.Y = point.Y - centerY * _scaleTransform.ScaleY;
+        }
+
+
 
         private void traceButton_Click(object sender, RoutedEventArgs e)
         {
