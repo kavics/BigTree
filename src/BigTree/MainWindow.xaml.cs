@@ -199,7 +199,8 @@ namespace BigTree
             var directory = IO.Path.GetDirectoryName(IO.Path.GetDirectoryName(IO.Path.GetDirectoryName(
                     AppDomain.CurrentDomain.BaseDirectory)));
 
-            var treeName = "_nodes_smalltree.txt";
+            //var treeName = "_nodes_smalltree.txt";
+            var treeName = "_nodes_smalltree_2.txt";
             var nodes = new TreeReader<SnContent>(
                 new StreamReader(IO.Path.Combine(directory, treeName)), SnContent.Parse)
                 .ToList();

@@ -1,0 +1,22 @@
+﻿SELECT TOP 25 n.NodeId, n.ParentNodeId, n.IsSystem, n.NodeTypeId, v.Type, n.Name FROM NodeInfoView v JOIN Nodes n ON v.NodeId = n.NodeId WHERE n.Path LIKE '/Root/System%' ORDER BY NodeId
+NodeId	ParentNodeId	IsSystem	NodeTypeId	Type	Name
+1005	NULL	1	9	ContentType	GenericContent
+1006	1005	1	9	ContentType	Folder
+1007	1006	1	9	ContentType	ADFolder
+1008	1005	1	9	ContentType	File
+1009	1008	1	9	ContentType	Settings
+1010	1009	1	9	ContentType	ADSettings
+1011	1008	1	9	ContentType	SystemFile
+1012	1011	1	9	ContentType	ApplicationCacheFile
+1013	1005	1	9	ContentType	Application
+1014	1013	1	9	ContentType	ApplicationOverride
+1015	1005	1	9	ContentType	Workflow
+1016	1015	1	9	ContentType	ApprovalWorkflow
+1017	1005	1	9	ContentType	ListItem
+1018	1017	1	9	ContentType	Task
+1019	1018	1	9	ContentType	ApprovalWorkflowTask
+1020	1017	1	9	ContentType	WebContent
+1021	1020	1	9	ContentType	Article
+1022	1006	1	9	ContentType	ArticleSection
+1023	1006	1	9	ContentType	ContentList
+1024	1023	1	9	ContentType	Aspect

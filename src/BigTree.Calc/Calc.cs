@@ -16,6 +16,7 @@ namespace BigTree.Calc
         static float _repulsionMul = 500; //UNDONE: move to the tree state
         static float _rubberPow = 2; //UNDONE: move to the tree state
         static float _rubberMul = 800; //UNDONE: move to the tree state
+        static float _gravity = 0.05f;
 
         static float _dampingFactor = 0.40f; // Reduces oscillation
 
@@ -64,8 +65,8 @@ namespace BigTree.Calc
                 PointF f1 = new PointF(-df * dx, -df * dy);
                 PointF f2 = new PointF(df * dx, df * dy);
 
-                n1.State.RepulsionForce = new PointF(n1.State.RepulsionForce.X + f1.X, n1.State.RepulsionForce.Y + f1.Y);
-                n2.State.RepulsionForce = new PointF(n2.State.RepulsionForce.X + f2.X, n2.State.RepulsionForce.Y + f2.Y);
+                n1.State.RepulsionForce = new PointF(n1.State.RepulsionForce.X + f1.X, n1.State.RepulsionForce.Y + f1.Y + (n1.Parent == null ? 0f : _gravity));
+                n2.State.RepulsionForce = new PointF(n2.State.RepulsionForce.X + f2.X, n2.State.RepulsionForce.Y + f2.Y + (n2.Parent == null ? 0f : _gravity));
             }
         }
 
@@ -109,7 +110,9 @@ namespace BigTree.Calc
                 if (dx < -FORCELIMIT) dx = -FORCELIMIT;
                 if (dy < -FORCELIMIT) dy = -FORCELIMIT;
 
-                var nextPosition = new PointF(node.Position.X + dx * _dampingFactor, node.Position.Y + dy * _dampingFactor);
+                var nextPosition = node.Parent == null
+                    ? new PointF(node.Position.X + dx * _dampingFactor, 0)
+                    : new PointF(node.Position.X + dx * _dampingFactor, node.Position.Y + dy * _dampingFactor);
                 node.Position = nextPosition;
             }
         }
